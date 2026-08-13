@@ -1,6 +1,7 @@
 export type Customer = {
   id: number;
-  firstname: string;
-  lastname: string;
+  firstName: string;
+  lastName: string;
+  email: string;
   bookingCount: number;
 };
