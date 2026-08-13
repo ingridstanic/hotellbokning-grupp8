@@ -3,7 +3,7 @@ import BookingSection from "../sections/BookingSection";
 import GuestSection from "../sections/GuestSection";
 import Footer from "../components/Footer/Footer";
 import WeatherSection from "../sections/WeatherSection";
-
+import RegisterGuestSection from "../sections/RegisterGuestSection";
 
 function Home() {
     return (
@@ -13,6 +13,9 @@ function Home() {
             </section>
             <section className="min-h-screen">
                 <BookingSection />
+            </section>
+            <section className="min-h-screen">
+                <RegisterGuestSection />
             </section>
             <section className="min-h-screen">
                 <GuestSection />
