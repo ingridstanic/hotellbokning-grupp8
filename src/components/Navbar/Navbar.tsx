@@ -5,25 +5,25 @@ export default function Navbar() {
         <div className="flex h-full items-center">
           <a
             href="/"
-            className="flex h-full items-center px-6 text-sm text-white hover:opacity-70"
+            className="flex h-full items-center px-7 text-sm text-black hover:opacity-70"
           >
             HEM
           </a>
 
-          <span className="h-6 w-px bg-white/50" />
+          <span className="h-6 w-px bg-black/50" />
 
           <a
             href="#guests"
-            className="flex h-full items-center px-6 text-sm text-white hover:opacity-70"
+            className="flex h-full items-center px-7 text-sm text-black hover:opacity-70"
           >
             GÄSTER
           </a>
 
-          <span className="h-6 w-px bg-white/50" />
+          <span className="h-6 w-px bg-black/50" />
 
           <a
             href="#booking"
-            className="flex h-full items-center px-6 text-sm text-white hover:opacity-70"
+            className="flex h-full items-center px-7 text-sm text-black hover:opacity-70"
           >
             BOKA
           </a>
