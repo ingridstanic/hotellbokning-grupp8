@@ -2,7 +2,9 @@ import Navbar from "../components/Navbar/Navbar";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen overflow-hidden">
+    <section 
+    id="home"
+    className="relative min-h-screen overflow-hidden">
 
       <Navbar />
 

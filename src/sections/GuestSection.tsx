@@ -2,7 +2,9 @@
  
  export default function GuestSection() {
   return (
-    <main className="min-h-screen border-50 border-[#74645B] bg-[#FFF9F3]">
+    <main 
+    id="guests"
+    className="min-h-screen border-50 border-[#74645B] bg-[#FFF9F3]">
       <h1 className="font-display text-center text-5xl py-30 text-black">
         Gästlista
       </h1>
@@ -51,6 +53,7 @@
     ⋮
   </Link>
 </div>
+
     </main>
 
   );
