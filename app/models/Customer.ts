@@ -1,4 +1,4 @@
-export type Guest = {
+export type Customer = {
   id: number;
   firstname: string;
   lastname: string;
