@@ -17,7 +17,7 @@ export default function WeatherSection() {
     <h2 className="font-display text-4xl text-black">
       Registrera gäst
     </h2>
-     <form className="flex w-[80%] max-w-2xl flex-col gap-4">
+     <form className="flex w-[50%] max-w-2xl flex-col gap-4">
     <input
       type="text"
       placeholder="Förnamn"
