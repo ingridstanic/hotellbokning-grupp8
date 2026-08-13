@@ -18,3 +18,15 @@ export const getCustomers = async () => {
     console.error("Could not fetch data. ", error);
   }
 };
+
+export const getCustomerById = async (id: number) => {
+  const apiUrl = `https://hotelapi-efatf0cfevcgb5gd.swedencentral-01.azurewebsites.net/customer/`;
+
+  try {
+    const response = await fetch(
+      `https://hotelapi-efatf0cfevcgb5gd.swedencentral-01.azurewebsites.net/customer/${id}`,
+    );
+  } catch (error) {
+    console.error("Could not fetch customer.");
+  }
+};
