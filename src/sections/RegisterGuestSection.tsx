@@ -14,7 +14,7 @@ export default function WeatherSection() {
   <div className="absolute inset-0 bg-[#FFF9F3]/20" />
 
   <div className="relative z-10 flex h-full w-full translate-x-40 flex-col items-center justify-center gap-6">
-    <h2 className="font-display text-5xl text-black">
+    <h2 className="font-display text-4xl text-black">
       Registrera gäst
     </h2>
      <form className="flex w-[80%] max-w-2xl flex-col gap-4">
