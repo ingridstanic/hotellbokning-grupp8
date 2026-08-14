@@ -4,12 +4,11 @@ import { getCustomers } from "../services/getCustomers";
 export const seedCustomers = async (customers: NewCustomer[]) => {
   const customersFromDB = await getCustomers();
 
-  customers.forEach(async (customer) => {
+  for (const customer of customers) {
     const alreadyExistingCustomer = customersFromDB?.some(
       (cFromDB) => cFromDB.email === customer.email,
     );
 
-    console.log(customer.email, alreadyExistingCustomer);
     if (!alreadyExistingCustomer) {
       try {
         const response = await fetch(
@@ -25,6 +24,8 @@ export const seedCustomers = async (customers: NewCustomer[]) => {
           },
         );
 
+        console.log(customer.email, alreadyExistingCustomer);
+
         if (response.ok) {
           console.log("Customers added to database.");
         } else {
@@ -34,5 +35,5 @@ export const seedCustomers = async (customers: NewCustomer[]) => {
         console.error("Could not create customers.");
       }
     }
-  });
+  }
 };

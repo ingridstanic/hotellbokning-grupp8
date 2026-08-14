@@ -1,4 +1,3 @@
-import { error } from "console";
 import { NewHotel } from "../models/NewHotel";
 import { getHotels } from "../services/getHotels";
 
