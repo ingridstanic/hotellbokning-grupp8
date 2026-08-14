@@ -1,18 +1,12 @@
-import { Customer } from "../models/Customer";
+import { NewCustomer } from "../models/NewCustomer";
 import { getCustomers } from "../services/getCustomers";
 
-export const seedCustomers = async (customers: any[]) => {
+export const seedCustomers = async (customers: NewCustomer[]) => {
   const customersFromDB = await getCustomers();
 
-  const filteredCustomers = customersFromDB?.filter((c) =>
-    c.email.endsWith("@villa.com"),
-  );
-
-  console.log(filteredCustomers);
-
   customers.forEach(async (customer) => {
-    const alreadyExistingCustomer = filteredCustomers?.some(
-      (filteredCustomer) => filteredCustomer.email === customer.email,
+    const alreadyExistingCustomer = customersFromDB?.some(
+      (cFromDB) => cFromDB.email === customer.email,
     );
 
     console.log(customer.email, alreadyExistingCustomer);
