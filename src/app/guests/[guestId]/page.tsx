@@ -11,7 +11,6 @@ export default async function GuestProfilePage({
 
   return (
 
-    
     <main className="min-h-screen bg-[#FFF9F3]">
         <Navbar />
       <h1 className="font-display text-center text-5xl pt-50 text-black">

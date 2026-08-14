@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function WeatherSection() {
     return (
         <>
-            <h1 className="font-display text-center text-5xl py-2 text-black">
+            <h1 className="font-display text-center text-5xl py-2 pt-7 text-black">
                 Stockholm
             </h1>
 
