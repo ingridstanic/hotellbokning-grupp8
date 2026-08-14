@@ -1,4 +1,6 @@
-export const customers = [
+import { NewCustomer } from "../models/NewCustomer";
+
+export const customers: NewCustomer[] = [
   {
     firstName: "Harry",
     lastName: "Pottman",
