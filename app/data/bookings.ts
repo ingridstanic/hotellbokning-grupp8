@@ -1,18 +1,18 @@
 import { NewBooking } from "../models/NewBooking";
 
-export const seedBookings: NewBooking[] = [
+export const bookings: NewBooking[] = [
   {
     hotelId: 23,
     customerId: 249,
     checkInDate: "2027-08-14",
-    checkOutDate: "2027-08-16",
+    checkOutDate: "2027-08-17",
     guests: 2,
   },
   {
     hotelId: 23,
     customerId: 247,
     checkInDate: "2026-10-14",
-    checkOutDate: "2026-20-20",
+    checkOutDate: "2026-10-20",
     guests: 1,
   },
   {
