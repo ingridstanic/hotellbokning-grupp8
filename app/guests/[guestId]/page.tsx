@@ -1,6 +1,6 @@
-import GuestProfile from "@/src/sections/GuestProfileSection";
-import Navbar from "@/src/components/Navbar/Navbar";
-import Footer from "@/src/components/Footer/Footer";
+import GuestProfile from "@/app/sections/GuestProfileSection";
+import Navbar from "@/app/components/Navbar/Navbar";
+import Footer from "@/app/components/Footer/Footer";
 
 export default async function GuestProfilePage({
   params,
@@ -17,4 +17,3 @@ export default async function GuestProfilePage({
     </main>
   );
 }
-  
