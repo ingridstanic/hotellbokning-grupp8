@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-import { MyDatePicker } from "../../../app/components/BookingForm/MyDatePicker/DatePicker";
+import { MyDatePicker } from "./BookingForm/MyDatePicker/DatePicker";
 import { DateRange } from "react-day-picker";
 
 export default function BookingForm() {
