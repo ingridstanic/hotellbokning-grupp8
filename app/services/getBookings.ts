@@ -1,20 +1,37 @@
+import { error } from "console";
+import { bookings } from "../data/bookings";
+import { ApiResponse } from "../models/ApiResponse";
 import { Booking } from "../models/Booking";
 
-export const getBookings = async () => {
-  const apiUrl =
-    "https://hotelapi-efatf0cfevcgb5gd.swedencentral-01.azurewebsites.net/bookings";
+const apiUrl = "https://aspcode.net/api/db/HotelAPI/bookings/";
+const apiKey = process.env.HOTEL_API_KEY!;
 
+export const getBookings = async () => {
   try {
-    const response = await fetch(apiUrl);
+    const response = await fetch(apiUrl, {
+      headers: {
+        "X-API-Key": apiKey,
+      },
+      cache: "no-store",
+    });
 
     if (!response.ok) {
-      console.error("Something went wrong...");
+      throw new Error(`Something went wrong... ${response.status}`);
     }
 
-    const data: Booking[] = await response.json();
-    console.log(data);
-    return data;
+    const data: ApiResponse<Booking>[] = await response.json();
+    const bookings = data.map((row) => row.data);
+    console.log(bookings);
+
+    return {
+      bookings: bookings,
+      error: "",
+    };
   } catch (error) {
-    console.error("Could not fetch data");
+    console.error("Could not fetch data", error);
+    return {
+      bookings: [],
+      error: "Could not load bookings, try again.",
+    };
   }
 };

@@ -1,38 +1,66 @@
+import { error } from "console";
 import { Customer } from "../models/Customer";
+import { data } from "react-router-dom";
+import { ApiResponse } from "../models/ApiResponse";
+import { customers } from "../data/customers";
+
+const apiUrl = `https://aspcode.net/api/db/HotelAPI/customers/`;
+const apiUrlFilter = `https://aspcode.net/api/db/HotelAPI/customers?email=`;
+const apiKey = process.env.HOTEL_API_KEY!;
 
 export const getCustomers = async () => {
-  const apiUrl =
-    "https://hotelapi-efatf0cfevcgb5gd.swedencentral-01.azurewebsites.net/customers";
-
   try {
-    const response = await fetch(apiUrl);
+    const response = await fetch(apiUrl, {
+      headers: {
+        "X-API-Key": apiKey,
+      },
+    });
 
     if (!response.ok) {
-      console.error("Could not get data.");
+      throw new Error(`Something went wrong, ${response.status}`);
     }
 
-    const data: Customer[] = await response.json();
-    console.log(data);
-    return data;
+    const data: ApiResponse<Customer>[] = await response.json();
+    const customers = data.map((row) => row.data);
+    console.log(customers);
+    return {
+      customers: customers,
+      error: "",
+    };
   } catch (error) {
     console.error("Could not fetch data. ", error);
+    return {
+      customers: [],
+      error: "Could not load customer data, try again.",
+    };
   }
 };
 
-export const getCustomerById = async (id: number) => {
-  const apiUrl = `https://hotelapi-efatf0cfevcgb5gd.swedencentral-01.azurewebsites.net/customer/`;
-
+export const getCustomerByEmail = async (email: string) => {
   try {
-    const response = await fetch(apiUrl + id);
+    const response = await fetch(
+      `${apiUrlFilter}${encodeURIComponent(email)}`,
+      {
+        headers: { "X-API-Key": apiKey },
+      },
+    );
 
     if (!response.ok) {
-      console.error("Could not get customer.");
+      throw new Error(`Something went wrong, ${response.status}`);
     }
 
-    const data: Customer = await response.json();
-    console.log(data);
-    return data;
+    const data: ApiResponse<Customer>[] = await response.json();
+
+    console.log(data[0].data);
+    return {
+      customer: data[0].data,
+      error: "",
+    };
   } catch (error) {
     console.error("Could not fetch customer. ", error);
+    return {
+      customer: null,
+      error: "Could not load customer, try again.",
+    };
   }
 };
