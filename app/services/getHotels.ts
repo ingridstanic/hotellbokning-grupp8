@@ -1,4 +1,3 @@
-import { hotel } from "../data/hotel";
 import { ApiResponse } from "../models/ApiResponse";
 import { Hotel } from "../models/Hotel";
 
