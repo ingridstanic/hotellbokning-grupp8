@@ -1,5 +1,3 @@
-import { Booking } from "./Booking";
-
 export type ApiResponse<T> = {
   createdAt: string;
   data: T;

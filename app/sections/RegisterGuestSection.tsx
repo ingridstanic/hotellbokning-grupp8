@@ -20,18 +20,21 @@ export default function WeatherSection() {
      <form className="flex w-[50%] max-w-2xl flex-col gap-4">
     <input
       type="text"
+      name="firstName"
       placeholder="Förnamn"
       className="rounded-md border border-[#74645B] bg-[#FFF9F3]/90 px-4 py-3 text-black outline-none"
     />
 
     <input
       type="text"
+      name="lastName"
       placeholder="Efternamn"
       className="rounded-md border border-[#74645B] bg-[#FFF9F3]/90 px-4 py-3 text-black outline-none"
     />
 
     <input
       type="email"
+      name="email"
       placeholder="Mailadress"
       className="rounded-md border border-[#74645B] bg-[#FFF9F3]/90 px-4 py-3 text-black outline-none"
     />
