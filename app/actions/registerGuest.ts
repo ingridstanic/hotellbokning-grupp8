@@ -1,5 +1,3 @@
-"use server";
-
 import { NewCustomer } from "../models/NewCustomer";
 import { createCustomer } from "../services/createCostumer";
 

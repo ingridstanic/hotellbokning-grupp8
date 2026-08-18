@@ -1,3 +1,4 @@
+"use server";
 import { Customer } from "../models/Customer";
 import { ApiResponse } from "../models/ApiResponse";
 import { NewCustomer } from "../models/NewCustomer";
