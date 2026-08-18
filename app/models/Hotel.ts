@@ -1,6 +1,5 @@
 export type Hotel = {
-  id: number;
-  name: string;
-  address: string;
-  bookingCount: number;
+  id: string;
+  hotelName: string;
+  hotelAddress: string;
 };
