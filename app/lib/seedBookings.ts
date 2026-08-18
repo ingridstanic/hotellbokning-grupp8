@@ -1,3 +1,5 @@
+"use server";
+import { Booking } from "../models/Booking";
 import { NewBooking } from "../models/NewBooking";
 import { getBookings } from "../services/getBookings";
 import { createBookingKey } from "../Utils/createBookingKey";
@@ -43,4 +45,30 @@ export const seedBookings = async (bookings: NewBooking[]) => {
       }
     }
   }
+};
+
+export const seedBooking = async (formData: FormData) => {
+  const guests = formData.get("guests");
+  const customerId = formData.get("customerId");
+  const checkInDate = formData.get("checkInDate");
+  const checkOutDate = formData.get("checkOutDate");
+
+  fetch("https://aspcode.net/api/db/HotelAPI/bookings", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-API-Key":
+        "jsonsrv_13315a4a470dd57817cb978cfe887090e4268517b1d4e84ca99223d51c1d32f8",
+    },
+    body: JSON.stringify({
+      checkInDate: checkInDate,
+      checkOutDate: checkOutDate,
+      customerId: customerId,
+      guests: guests,
+      hotelId: 0,
+      id: 0,
+    }),
+  })
+    .then((r) => r.json())
+    .then((data: Booking) => console.log(data));
 };
