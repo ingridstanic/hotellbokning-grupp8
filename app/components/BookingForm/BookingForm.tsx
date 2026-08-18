@@ -7,7 +7,7 @@ import MyDatePicker from "./MyDatePicker/DatePicker";
 import Form from "./Form";
 
 export default function BookingForm() {
-  const [range, setRange] = useState<DateRange>({
+  const [range, setRange] = useState<DateRange | undefined>({
     from: new Date(),
     to: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000),
   });
@@ -24,10 +24,10 @@ export default function BookingForm() {
 
         <div className="flex justify-center gap-6">
           <div className="border-2 border-black p-5 text-center">
+            <p>Incheckning:</p>{" "}
             {range?.from && (
               <>
                 {" "}
-                <p>Incheckning:</p>{" "}
                 <p className="text-3xl">
                   {" "}
                   {range.from.toLocaleDateString("sv-SE", {
@@ -45,22 +45,27 @@ export default function BookingForm() {
           </div>
 
           <div className="border-2 border-black p-5 text-center">
-            {range?.to && (
-              <>
-                {" "}
-                <p>Utcheckning:</p>{" "}
-                <p className="text-4xl">
+            <p>Utcheckning:</p>{" "}
+            {range?.to &&
+              range?.from &&
+              range?.to.getDate() !== range?.from.getDate() && (
+                <>
                   {" "}
-                  {range.to.toLocaleDateString("sv-SE", {
-                    day: "2-digit",
-                  })}{" "}
-                </p>{" "}
-                <p>
-                  {" "}
-                  {range.to.toLocaleDateString("sv-SE", { month: "long" })}{" "}
-                </p>{" "}
-              </>
-            )}
+                  <p className="text-4xl">
+                    {" "}
+                    {range.to.toLocaleDateString("sv-SE", {
+                      day: "2-digit",
+                    })}{" "}
+                  </p>{" "}
+                  <p>
+                    {" "}
+                    {range.to.toLocaleDateString("sv-SE", {
+                      month: "long",
+                    })}{" "}
+                  </p>{" "}
+                </>
+              )}
+            <p> </p>
           </div>
         </div>
 

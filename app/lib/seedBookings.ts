@@ -47,6 +47,8 @@ export const seedBookings = async (bookings: NewBooking[]) => {
   }
 };
 
+export const limitBookings = async () => {};
+
 export const seedBooking = async (formData: FormData) => {
   const guests = formData.get("guests");
   const customerId = formData.get("customerId");
