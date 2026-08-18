@@ -27,7 +27,6 @@ export const createBooking = async (form: FormData) => {
   const checkOutDate = form.get("checkOutDate");
 
   const { hotels } = await getHotels();
-  const { hotels } = await getHotels();
 
   if (hotels.length === 0) {
     throw new Error("No hotel found");
@@ -36,7 +35,6 @@ export const createBooking = async (form: FormData) => {
     throw new Error("No hotel found");
   }
 
-  const hotelId = hotels[0].id;
   const hotelId = hotels[0].id;
 
   //hämtar bokningar för den dagen
@@ -50,11 +48,6 @@ export const createBooking = async (form: FormData) => {
       "X-API-Key": process.env.API_KEY!,
     },
     body: JSON.stringify({
-      checkInDate,
-      checkOutDate,
-      customerId,
-      guests,
-      hotelId,
       checkInDate,
       checkOutDate,
       customerId,
