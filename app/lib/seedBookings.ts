@@ -45,5 +45,3 @@ export const seedBookings = async (bookings: NewBooking[]) => {
     }
   }
 };
-
-export const limitBookings = async () => {};

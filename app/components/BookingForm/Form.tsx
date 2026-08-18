@@ -1,7 +1,7 @@
 "use client";
 
 import { customers } from "@/app/data/customers";
-import { createBooking } from "@/app/actions/createBooking";
+import { submitBooking } from "@/app/actions/createBooking";
 import { useState } from "react";
 import type { DateRange } from "react-day-picker";
 
@@ -12,12 +12,12 @@ type FormProps = {
 };
 
 export default function Form({ range, guests, setGuests }: FormProps) {
-  const [customerId, setCustomerId] = useState<number>();
+  const [customerId, setCustomerId] = useState<string>();
 
   return (
     <form
       className="flex w-full flex-col gap-4 text-left "
-      action={createBooking}
+      action={submitBooking}
     >
       <input
         type="date"
@@ -26,7 +26,6 @@ export default function Form({ range, guests, setGuests }: FormProps) {
         readOnly
         hidden
       />
-
       <input
         type="date"
         name="checkOutDate"
@@ -39,27 +38,26 @@ export default function Form({ range, guests, setGuests }: FormProps) {
         <label htmlFor="customerId">Kund</label>
 
         <select
-          id="customerId"
-          name="customerId"
+          id="customerEmail"
+          name="customerEmail"
           className="w-full rounded-md border border-gray-400 bg-white p-3"
           value={customerId}
           onChange={(e) => {
-            setCustomerId(e.target.value ? Number(e.target.value) : undefined);
+            setCustomerId(e.target.value ? String(e.target.value) : undefined);
           }}
         >
           <option value="">Välj kund</option>
 
           {customers.map((customer) => (
-            <option key={customer.id} value={customer.id}>
+            <option key={customer.email} value={customer.email}>
               {customer.firstName}
             </option>
           ))}
         </select>
         {!customerId && (
-          <p className="text-red-400"> var god och välj en kund</p>
+          <p className="text-red-400 text-xs"> var god och välj en kund</p>
         )}
       </div>
-
       <div className="flex flex-col gap-2">
         <label htmlFor="guests">Antal gäster</label>
 
@@ -73,9 +71,13 @@ export default function Form({ range, guests, setGuests }: FormProps) {
           className="w-full rounded-md border border-gray-400 bg-white p-3"
         />
       </div>
-
       <button
-        disabled={!customerId}
+        disabled={
+          !customerId ||
+          !range?.from ||
+          !range?.to ||
+          range.from.getTime() === range.to.getTime()
+        }
         type="submit"
         className="w-full rounded-md bg-[#74645B] p-3 text-white disabled:bg-gray-400 disabled:cursor-not-allowed"
       >
