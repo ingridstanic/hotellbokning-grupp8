@@ -2,6 +2,7 @@
 
 import { customers } from "@/app/data/customers";
 import { submitBooking } from "@/app/actions/createBooking";
+import { registerBooking } from "@/app/actions/registerBooking";
 import { useState } from "react";
 import type { DateRange } from "react-day-picker";
 
@@ -18,6 +19,7 @@ export default function Form({ range, guests, setGuests }: FormProps) {
     <form
       className="flex w-full flex-col gap-4 text-left "
       action={submitBooking}
+      action={registerBooking}
     >
       <input
         type="date"

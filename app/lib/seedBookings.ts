@@ -1,46 +1,25 @@
-"use server";
 import { NewBooking } from "../models/NewBooking";
 import { getBookings } from "../services/getBookings";
 import { createBookingKey } from "../Utils/createBookingKey";
+import { createBooking } from "../services/createBooking";
 
 export const seedBookings = async (bookings: NewBooking[]) => {
-  const bookingsFromDB = await getBookings();
+  const { bookings: bookingsFromDB } = await getBookings();
+  const existingKeys = new Set(
+    bookingsFromDB.map((bFromDB) => createBookingKey(bFromDB)),
+  );
 
-  //går igenom varje booking
-  //skapar key
-  //går igenom varje bookning från DB, skapar key jämnför key från DB med key från lista med data
   for (const booking of bookings) {
     const newBookingkey = createBookingKey(booking);
-    const alreadyExistingBooking = bookingsFromDB?.some(
-      (bFromDB) => createBookingKey(bFromDB) === newBookingkey,
-    );
+    console.log(newBookingkey);
+    if (!existingKeys.has(newBookingkey)) {
+      const { booking: createdBooking, error } = await createBooking(booking);
 
-    //om inte key, CREATE
-    if (!alreadyExistingBooking) {
-      try {
-        const response = await fetch(
-          "https://aspcode.net/api/db/HotelAPI/bookings",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              hotelId: booking.hotelId,
-              customerId: booking.customerId,
-              checkInDate: booking.checkInDate,
-              checkOutDate: booking.checkOutDate,
-              guests: booking.guests,
-            }),
-          },
-        );
-        console.log(newBookingkey, alreadyExistingBooking);
-
-        if (response.ok) {
-          console.log("Bookings added to database.");
-        } else {
-          console.log("POST failed", response.status);
-        }
-      } catch (error) {
-        console.error("could not create bookings.");
+      if (error) {
+        console.error("Could not create booking", error);
+      } else {
+        existingKeys.add(newBookingkey);
+        console.log(`${newBookingkey} added to database.`);
       }
     }
   }

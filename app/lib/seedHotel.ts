@@ -8,8 +8,10 @@ export const seedHotel = async (hotel: NewHotel) => {
   const { hotels: hotelsFromDB } = await getHotels();
 
   const alreadyExistingHotel = hotelsFromDB?.some(
-    (hFromDB) => hFromDB.hotelName === hotel.hotelName,
+    (hFromDB) => hFromDB.name === hotel.name,
   );
+
+  console.log(alreadyExistingHotel, hotel.name);
 
   if (!alreadyExistingHotel) {
     try {
@@ -20,8 +22,8 @@ export const seedHotel = async (hotel: NewHotel) => {
           "X-API-Key": apiKey,
         },
         body: JSON.stringify({
-          name: hotel.hotelName,
-          address: hotel.hotelAddress,
+          name: hotel.name,
+          address: hotel.address,
         }),
       });
 
