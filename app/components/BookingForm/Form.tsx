@@ -42,7 +42,7 @@ export default function Form({ range, guests, setGuests }: FormProps) {
           id="customerId"
           name="customerId"
           className="w-full rounded-md border border-gray-400 bg-white p-3"
-          value={customerId ?? ""}
+          value={customerId}
           onChange={(e) => {
             setCustomerId(e.target.value ? Number(e.target.value) : undefined);
           }}
@@ -55,6 +55,9 @@ export default function Form({ range, guests, setGuests }: FormProps) {
             </option>
           ))}
         </select>
+        {!customerId && (
+          <p className="text-red-400"> var god och välj en kund</p>
+        )}
       </div>
 
       <div className="flex flex-col gap-2">
@@ -72,8 +75,9 @@ export default function Form({ range, guests, setGuests }: FormProps) {
       </div>
 
       <button
+        disabled={!customerId}
         type="submit"
-        className="w-full rounded-md bg-[#74645B] p-3 text-white"
+        className="w-full rounded-md bg-[#74645B] p-3 text-white disabled:bg-gray-400 disabled:cursor-not-allowed"
       >
         Boka
       </button>

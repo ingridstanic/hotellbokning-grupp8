@@ -5,7 +5,7 @@ export const customers: Customer[] = [
     firstName: "Harry",
     lastName: "Pottman",
     email: "harry.pottman@villa.com",
-    id: 0,
+    id: 7,
     bookingCount: 3,
   },
   {
