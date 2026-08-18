@@ -1,26 +1,29 @@
 import { NewHotel } from "../models/NewHotel";
 import { getHotels } from "../services/getHotels";
 
+const apiUrl = `https://aspcode.net/api/db/HotelAPI/hotels`;
+const apiKey = process.env.HOTEL_API_KEY!;
+
 export const seedHotel = async (hotel: NewHotel) => {
-  const hotelsFromDB = await getHotels();
+  const { hotels: hotelsFromDB } = await getHotels();
 
   const alreadyExistingHotel = hotelsFromDB?.some(
-    (hFromDB) => hFromDB.name === hotel.name,
+    (hFromDB) => hFromDB.hotelName === hotel.hotelName,
   );
 
   if (!alreadyExistingHotel) {
     try {
-      const response = await fetch(
-        "https://hotelapi-efatf0cfevcgb5gd.swedencentral-01.azurewebsites.net/hotel/create",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: hotel.name,
-            address: hotel.address,
-          }),
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-API-Key": apiKey,
         },
-      );
+        body: JSON.stringify({
+          name: hotel.hotelName,
+          address: hotel.hotelAddress,
+        }),
+      });
 
       if (response.ok) {
         console.log("Hotel added to database.", response.status);

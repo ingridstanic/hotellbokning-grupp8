@@ -1,38 +1,27 @@
 import { NewCustomer } from "../models/NewCustomer";
+import { createCustomer } from "../services/createCostumer";
 import { getCustomers } from "../services/getCustomers";
 
 export const seedCustomers = async (customers: NewCustomer[]) => {
-  const customersFromDB = await getCustomers();
+  const { customers: customersFromDB } = await getCustomers();
+  //Skapar SET lista med existerande emails
+  const existingEmails = new Set(
+    customersFromDB.map((cFromDB) => cFromDB.email),
+  );
 
+  //kollar om customers email redan finns i existing
+  //om inte create
   for (const customer of customers) {
-    const alreadyExistingCustomer = customersFromDB?.some(
-      (cFromDB) => cFromDB.email === customer.email,
-    );
+    if (!existingEmails.has(customer.email)) {
+      const { customer: createdCustomers, error } =
+        await createCustomer(customer);
 
-    if (!alreadyExistingCustomer) {
-      try {
-        const response = await fetch(
-          "https://hotelapi-efatf0cfevcgb5gd.swedencentral-01.azurewebsites.net/customer/create",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              firstName: customer.firstName,
-              lastName: customer.lastName,
-              email: customer.email,
-            }),
-          },
-        );
-
-        console.log(customer.email, alreadyExistingCustomer);
-
-        if (response.ok) {
-          console.log("Customers added to database.");
-        } else {
-          console.log("POST failed", response.status);
-        }
-      } catch (error) {
-        console.error("Could not create customers.");
+      //loggar fel, kunden läggs EJ till i existing
+      if (error) {
+        console.error("Could not create customer: ", customer.email, error);
+      } else {
+        existingEmails.add(customer.email);
+        console.log(`${customer.email} added to database`);
       }
     }
   }
