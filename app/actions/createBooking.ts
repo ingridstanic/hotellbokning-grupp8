@@ -1,6 +1,5 @@
 "use server";
 
-import { Booking } from "../models/Booking";
 import { getHotels } from "../services/getHotels";
 
 export const createBooking = async (form: FormData) => {
@@ -36,3 +35,6 @@ export const createBooking = async (form: FormData) => {
     throw new Error("Could not create booking");
   }
 };
+
+      throw new Error("Could not create booking");
+  }}
