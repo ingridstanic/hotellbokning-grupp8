@@ -1,8 +1,5 @@
-import { error } from "console";
 import { Customer } from "../models/Customer";
-import { data } from "react-router-dom";
 import { ApiResponse } from "../models/ApiResponse";
-import { customers } from "../data/customers";
 
 const apiUrl = `https://aspcode.net/api/db/HotelAPI/customers/`;
 const apiUrlFilter = `https://aspcode.net/api/db/HotelAPI/customers?email=`;
@@ -14,6 +11,7 @@ export const getCustomers = async () => {
       headers: {
         "X-API-Key": apiKey,
       },
+      cache: "no-store",
     });
 
     if (!response.ok) {
@@ -21,7 +19,11 @@ export const getCustomers = async () => {
     }
 
     const data: ApiResponse<Customer>[] = await response.json();
-    const customers = data.map((row) => row.data);
+    const customers = data.map((row) => ({
+      ...row.data,
+      id: row.id,
+    }));
+
     console.log(customers);
     return {
       customers: customers,

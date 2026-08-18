@@ -8,6 +8,7 @@ export const getHotels = async () => {
   try {
     const response = await fetch(apiUrl, {
       headers: { "X-API-Key": apiKey },
+      cache: "no-store",
     });
 
     if (!response.ok) {
@@ -15,7 +16,10 @@ export const getHotels = async () => {
     }
 
     const data: ApiResponse<Hotel>[] = await response.json();
-    const hotels = data.map((row) => row.data);
+    const hotels = data.map((row) => ({
+      ...row.data,
+      id: row.id,
+    }));
     console.log(hotels);
     return {
       hotels: hotels,
