@@ -1,5 +1,3 @@
-import { error } from "console";
-import { bookings } from "../data/bookings";
 import { ApiResponse } from "../models/ApiResponse";
 import { Booking } from "../models/Booking";
 
@@ -20,7 +18,10 @@ export const getBookings = async () => {
     }
 
     const data: ApiResponse<Booking>[] = await response.json();
-    const bookings = data.map((row) => row.data);
+    const bookings = data.map((row) => ({
+      ...row.data,
+      id: row.id,
+    }));
     console.log(bookings);
 
     return {
