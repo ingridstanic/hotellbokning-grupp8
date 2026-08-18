@@ -3,11 +3,11 @@ import Image from "next/image";
 export default function Navbar() {
   return (
     <nav className="flex justify-between py-8 absolute top-0 left-0 z-20 w-full bg-[#74645B]">
-      <div className="h-15 justify-start px-12 pt-3">
+      <div className="h-15 justify-start px-12">
         <Image
           src="/images/logga.png"
           alt="Logo"
-          width={100}
+          width={140}
           height={40}
         />
       </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { customers } from "@/app/data/customers";
-import { seedBooking } from "@/app/lib/seedBookings";
+import { createBooking } from "@/app/actions/createBooking";
 import { useState } from "react";
 import type { DateRange } from "react-day-picker";
 
@@ -17,7 +17,7 @@ export default function Form({ range, guests, setGuests }: FormProps) {
   return (
     <form
       className="flex w-full flex-col gap-4 text-left "
-      action={seedBooking}
+      action={createBooking}
     >
       <input
         type="date"
