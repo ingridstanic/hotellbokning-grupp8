@@ -23,11 +23,11 @@ export const createBooking = async (form: FormData) => {
       "X-API-Key": process.env.API_KEY!,
     },
     body: JSON.stringify({
-      checkInDate,
-      checkOutDate,
-      customerId,
-      guests,
-      hotelId,
+    checkInDate,
+    checkOutDate,
+    customerId,
+    guests,
+    hotelId,
     }),
   });
 
