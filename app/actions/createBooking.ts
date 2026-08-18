@@ -31,9 +31,6 @@ export const createBooking = async (form: FormData) => {
   if (hotels.length === 0) {
     throw new Error("No hotel found");
   }
-  if (hotels.length === 0) {
-    throw new Error("No hotel found");
-  }
 
   const hotelId = hotels[0].id;
 
@@ -57,7 +54,6 @@ export const createBooking = async (form: FormData) => {
   });
 
   if (!response.ok) {
-    throw new Error("Could not create booking");
     throw new Error("Could not create booking");
   }
 
