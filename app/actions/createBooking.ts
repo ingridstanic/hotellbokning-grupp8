@@ -35,8 +35,3 @@ export const createBooking = async (form: FormData) => {
   if (!response.ok) {
       throw new Error("Could not create booking");
   }
-
-  const data: Booking = await response.json();
-
-  return data;
-};
