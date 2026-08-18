@@ -9,13 +9,13 @@ export const createBooking = async (form: FormData) => {
   const checkInDate = form.get("checkInDate");
   const checkOutDate = form.get("checkOutDate");
 
-   const { hotels } = await getHotels();
+  const { hotels } = await getHotels();
 
-   if (hotels.length === 0) {
-  throw new Error("No hotel found");
-}
+  if (hotels.length === 0) {
+    throw new Error("No hotel found");
+  }
 
-   const hotelId = hotels[0].id;
+  const hotelId = hotels[0].id;
 
   const response = await fetch("https://aspcode.net/api/db/HotelAPI/bookings", {
     method: "POST",
@@ -24,14 +24,15 @@ export const createBooking = async (form: FormData) => {
       "X-API-Key": process.env.API_KEY!,
     },
     body: JSON.stringify({
-     checkInDate,
-    checkOutDate,
-    customerId,
-    guests,
-    hotelId,
+      checkInDate,
+      checkOutDate,
+      customerId,
+      guests,
+      hotelId,
     }),
   });
 
   if (!response.ok) {
-      throw new Error("Could not create booking");
+    throw new Error("Could not create booking");
   }
+};
