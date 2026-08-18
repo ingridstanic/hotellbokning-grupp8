@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export default function Navbar() {
   return (
-    <nav className="absolute top-0 left-0 z-20 w-full bg-[#74645B]">
-      <div className="flex h-15 items-center justify-start px-8 pt-10">
+    <nav className="flex justify-between py-8 absolute top-0 left-0 z-20 w-full bg-[#74645B]">
+      <div className="h-15 justify-start px-12 pt-3">
         <Image
           src="/images/logga.png"
           alt="Logo"
@@ -11,8 +11,8 @@ export default function Navbar() {
           height={40}
         />
       </div>
-      <div className="flex h-15 items-center justify-end px-8">
-        <div className="flex h-full items-center">
+      <div className="h-15 justify-end px-8">
+        <div className="flex h-full items-center gap-6">
           <a
             href="/"
             className="flex h-full items-center px-7 text-sm text-black hover:opacity-70"
@@ -33,7 +33,7 @@ export default function Navbar() {
 
           <a
             href="#booking"
-            className="flex h-full items-center px-7 text-sm text-black hover:opacity-70"
+            className="flex items-center px-4 py-2 text-sm text-black hover:opacity-70 border border-[#D9D9D9] rounded-full hover:bg-[#D9D9D9] hover:text-black transition-colors"
           >
             BOKA
           </a>
