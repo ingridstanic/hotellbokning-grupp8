@@ -1,8 +1,7 @@
-import { Booking } from "../models/Booking";
+
 import { NewBooking } from "../models/NewBooking";
 import { createBooking } from "../services/createBooking";
-import { getHotels } from "../services/getHotels";
-
+import { getHotels } from "../services/getHotels"
 // export const createBooking = async (form: FormData) => {
 //   const guests = Number(form.get("guests"));
 //   const customerId = form.get("customerId");
@@ -41,24 +40,24 @@ import { getHotels } from "../services/getHotels";
 //   return data;
 // };
 
-export const registerBooking = async (form: FormData, hotelId: string) => {
-  const guests = Number(form.get("guests"));
-  const customerId = form.get("customerId") as string;
-  const checkInDate = form.get("checkInDate") as string;
-  const checkOutDate = form.get("checkOutDate") as string;
+// export const registerBooking = async (form: FormData, hotelId: string) => {
+ // const guests = Number(form.get("guests"));
+ // const customerId = form.get("customerId") as string;
+ // const checkInDate = form.get("checkInDate") as string;
+ // const checkOutDate = form.get("checkOutDate") as string;
 
-  const newBooking: NewBooking = {
-    guests,
-    customerId,
-    checkInDate,
-    checkOutDate,
-    hotelId,
-  };
+ // const newBooking: NewBooking = {
+ //   guests,
+ //   customerId,
+ //   checkInDate,
+ //   checkOutDate,
+ //   hotelId,
+ // };
 
-  const createdBooking = await createBooking(newBooking);
-  if (createdBooking.error) {
-    throw new Error(createdBooking.error);
-  }
+ // const createdBooking = await createBooking(newBooking);
+ // if (createdBooking.error) {
+ //   throw new Error(createdBooking.error);
+ // }
 
-  return createdBooking.booking;
-};
+ // return createdBooking.booking;
+//};

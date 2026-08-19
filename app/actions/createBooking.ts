@@ -21,11 +21,18 @@ export const limitBookings = async (checkInDate: string) => {
   return bookingsChosenDay.length;
 };
 
+<<<<<<< HEAD
 export async function submitBooking(formData: FormData): Promise<void> {
   await createBooking(formData);
 }
 
 export const createBooking = async (form: FormData) => {
+=======
+export const createBooking = async (
+  _state: { success: boolean; error: string },
+  form: FormData,
+) => {
+>>>>>>> afa7c5e (createBooking + form)
   const guests = Number(form.get("guests"));
   const customerId = String(form.get("customerId"));
   const checkInDate = String(form.get("checkInDate"));
@@ -33,9 +40,11 @@ export const createBooking = async (form: FormData) => {
 
   const numberOfBookings = await limitBookings(checkInDate);
 
-  if (numberOfBookings >= 3) {
-    throw new Error("No more bookings available for this date");
-  }
+  if (numberOfBookings >= 3)
+  return {
+  success: false,
+  error: "Hotellet är fullbokat!",
+};
 
   const { hotels } = await getHotels();
 
@@ -52,4 +61,9 @@ export const createBooking = async (form: FormData) => {
     guests,
     hotelId,
   });
+
+ return {
+    success: true,
+    error: "",
+  };
 };

@@ -1,9 +1,8 @@
 "use client";
 
 import { customers } from "@/app/data/customers";
-import { submitBooking } from "@/app/actions/createBooking";
-import { registerBooking } from "@/app/actions/registerBooking";
-import { useState } from "react";
+import { createBooking } from "@/app/actions/createBooking";
+import { useState, useActionState } from "react";
 import type { DateRange } from "react-day-picker";
 
 type FormProps = {
@@ -15,10 +14,16 @@ type FormProps = {
 export default function Form({ range, guests, setGuests }: FormProps) {
   const [customerId, setCustomerId] = useState<string>();
 
+  const [state, formAction] = useActionState(createBooking, {
+  success: true,
+  error: "",
+});
+
   return (
     <form
       className="flex w-full flex-col gap-4 text-left "
       action={submitBooking}
+      action={registerBooking}
     >
       <input
         type="date"
