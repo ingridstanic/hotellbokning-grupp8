@@ -14,12 +14,12 @@ export default function GuestProfile({ guestId }: GuestProfileSectionProps) {
             <p className="text-center text-black">
                 Gäst: {guestId}
             </p>
-            <div className="absolute left-20 top-20">
+            <div className="absolute left-20 top-35">
                 <Image
                     src="/images/hotell.png"
                     alt="Hotell"
-                    width={300}
-                    height={300}
+                    width={250}
+                    height={250}
                 />
             </div>
             <p className="text-right text-2xl pr-40 py-10 text-black">
