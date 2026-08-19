@@ -23,7 +23,7 @@ export const limitBookings = async (checkInDate: string) => {
 
 export const createBooking = async (form: FormData) => {
   const guests = Number(form.get("guests"));
-  const customerId = Number(form.get("customerId"));
+  const customerId = String(form.get("customerId"));
   const checkInDate = String(form.get("checkInDate"));
   const checkOutDate = String(form.get("checkOutDate"));
 
@@ -49,4 +49,3 @@ export const createBooking = async (form: FormData) => {
     hotelId,
   });
 };
-

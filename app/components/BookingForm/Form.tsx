@@ -18,7 +18,6 @@ export default function Form({ range, guests, setGuests }: FormProps) {
   return (
     <form
       className="flex w-full flex-col gap-4 text-left "
-      action={submitBooking}
       action={registerBooking}
     >
       <input
