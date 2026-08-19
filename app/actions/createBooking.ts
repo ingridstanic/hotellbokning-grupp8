@@ -5,20 +5,13 @@ import { getBookings } from "../services/getBookings";
 import { getHotels } from "../services/getHotels";
 import { createBookingRequest } from "../services/createBookingRequest";
 
-export const limitBookings = async (checkInDate: string) => {
+export const limitBookings = async () => {
   const result = await getBookings();
 
   const bookings: Booking[] = result.bookings;
   //hittar alla bokingar
 
-  const bookingsChosenDay = bookings.filter(
-    (b) => b.checkInDate === checkInDate,
-    //hittar alla bokningar på incheckningsdagen
-  );
-
-  console.log(bookingsChosenDay);
-
-  return bookingsChosenDay.length;
+  return bookings.length;
 };
 
 export const createBooking = async (
@@ -30,7 +23,7 @@ export const createBooking = async (
   const checkInDate = String(form.get("checkInDate"));
   const checkOutDate = String(form.get("checkOutDate"));
 
-  const numberOfBookings = await limitBookings(checkInDate);
+  const numberOfBookings = await limitBookings();
 
   if (numberOfBookings >= 3)
   return {
