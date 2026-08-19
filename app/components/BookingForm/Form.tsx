@@ -2,7 +2,7 @@
 
 import { customers } from "@/app/data/customers";
 import { createBooking } from "@/app/actions/createBooking";
-import { useState, useActionState } from "react";
+import { useState, useActionState, useEffect } from "react";
 import type { DateRange } from "react-day-picker";
 import BookingMessage from "@/app/components/BookingMessage/BookingMessage";
 
@@ -14,13 +14,20 @@ type FormProps = {
 
 export default function Form({ range, guests, setGuests }: FormProps) {
   const [customerId, setCustomerId] = useState<string>();
-
+  const [showMessage, setShowMessage] = useState(false);
   const [state, formAction] = useActionState(createBooking, {
-  success: true,
+  success: false,
   error: "",
 });
 
+useEffect(() => {
+  if (state.success || state.error) {
+    setShowMessage(true);
+  }
+}, [state]);
+
   return (
+    <>
     <form
       className="flex w-full flex-col gap-4 text-left "
       action={formAction}
@@ -90,5 +97,12 @@ export default function Form({ range, guests, setGuests }: FormProps) {
         Boka
       </button>
     </form>
+    {showMessage && (
+    <BookingMessage
+    message={state.success ? "Bokningen lyckades!" : state.error}
+    onClose={() => setShowMessage(false)}
+  />
+)}
+    </>
   );
 }
