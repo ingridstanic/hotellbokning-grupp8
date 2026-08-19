@@ -4,6 +4,7 @@ import { customers } from "@/app/data/customers";
 import { createBooking } from "@/app/actions/createBooking";
 import { useState, useActionState } from "react";
 import type { DateRange } from "react-day-picker";
+import BookingMessage from "@/app/components/BookingMessage/BookingMessage";
 
 type FormProps = {
   range: DateRange | undefined;
