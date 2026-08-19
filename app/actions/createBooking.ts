@@ -31,11 +31,11 @@ export const createBooking = async (form: FormData) => {
   const checkInDate = String(form.get("checkInDate"));
   const checkOutDate = String(form.get("checkOutDate"));
 
-  const numberOfBookings = await limitBookings(checkInDate);
+  //const numberOfBookings = await limitBookings(checkInDate);
 
-  if (numberOfBookings >= 3) {
+  /*if (numberOfBookings >= 3) {
     throw new Error("No more bookings available for this date");
-  }
+  }*/
 
   const { hotels } = await getHotels();
 

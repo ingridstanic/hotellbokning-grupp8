@@ -5,6 +5,7 @@ import { submitBooking } from "@/app/actions/createBooking";
 import { registerBooking } from "@/app/actions/registerBooking";
 import { useState } from "react";
 import type { DateRange } from "react-day-picker";
+import { getCustomers } from "@/app/services/getCustomers";
 
 type FormProps = {
   range: DateRange | undefined;
@@ -12,7 +13,7 @@ type FormProps = {
   setGuests: (guests: number) => void;
 };
 
-export default function Form({ range, guests, setGuests }: FormProps) {
+export default async function Form({ range, guests, setGuests }: FormProps) {
   const [customerId, setCustomerId] = useState<string>();
 
   return (
