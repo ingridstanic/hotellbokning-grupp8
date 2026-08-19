@@ -5,13 +5,16 @@ import { getBookings } from "../services/getBookings";
 import { getHotels } from "../services/getHotels";
 import { createBookingRequest } from "../services/createBookingRequest";
 
-export const limitBookings = async () => {
+export const limitBookings = async (checkInDate: string ) => {
   const result = await getBookings();
 
   const bookings: Booking[] = result.bookings;
-  //hittar alla bokingar
 
-  return bookings.length;
+  const bookingsChosenDay = bookings.filter(
+    (booking) => booking.checkInDate === checkInDate
+  );
+
+  return bookingsChosenDay.length;
 };
 
 export const createBooking = async (
@@ -23,7 +26,7 @@ export const createBooking = async (
   const checkInDate = String(form.get("checkInDate"));
   const checkOutDate = String(form.get("checkOutDate"));
 
-  const numberOfBookings = await limitBookings();
+  const numberOfBookings = await limitBookings(checkInDate);
 
   if (numberOfBookings >= 3)
   return {
