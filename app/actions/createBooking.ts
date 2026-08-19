@@ -21,18 +21,10 @@ export const limitBookings = async (checkInDate: string) => {
   return bookingsChosenDay.length;
 };
 
-<<<<<<< HEAD
-export async function submitBooking(formData: FormData): Promise<void> {
-  await createBooking(formData);
-}
-
-export const createBooking = async (form: FormData) => {
-=======
 export const createBooking = async (
   _state: { success: boolean; error: string },
   form: FormData,
 ) => {
->>>>>>> afa7c5e (createBooking + form)
   const guests = Number(form.get("guests"));
   const customerId = String(form.get("customerId"));
   const checkInDate = String(form.get("checkInDate"));
