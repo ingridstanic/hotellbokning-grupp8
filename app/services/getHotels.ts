@@ -20,9 +20,13 @@ export const getHotels = async () => {
       ...row.data,
       id: row.id,
     }));
-    console.log(hotels);
+
+    const villaHotel = hotels.filter(
+      (h) => h.id === "ea8129c0-9f84-4f34-a68a-9a153676c657",
+    );
+    console.log(villaHotel);
     return {
-      hotels: hotels,
+      hotels: villaHotel,
       error: "",
     };
   } catch (error) {
