@@ -9,11 +9,13 @@ import { Customer } from "@/app/models/Customer";
 
 type FormProps = {
   range: DateRange | undefined;
+  guests: number;
+  setGuests: (guests: number) => void;
 };
 
 export default function Form({ range, guests, setGuests }: FormProps) {
   const [customers, setCustomers] = useState<Customer[]>([]);
-  const [customerEmail, setCustomerEmail] = useState<string>();
+  const [customerId, setCustomerId] = useState<string>();
   const [showMessage, setShowMessage] = useState(false);
   const [state, formAction] = useActionState(createBooking, {
     success: false,
@@ -98,7 +100,7 @@ export default function Form({ range, guests, setGuests }: FormProps) {
         </div>
         <button
           disabled={
-            !customerEmail ||
+            !customerId ||
             !range?.from ||
             !range?.to ||
             range.from.getTime() === range.to.getTime()

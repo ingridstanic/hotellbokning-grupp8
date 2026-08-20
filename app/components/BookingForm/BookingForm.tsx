@@ -8,6 +8,7 @@ import MyDatePicker from "./MyDatePicker/DatePicker";
 import Form from "./Form";
 
 export default function BookingForm() {
+  const [guests, setGuests] = useState<number>(1);
   const [range, setRange] = useState<DateRange | undefined>({
     from: new Date(),
     to: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000),
@@ -79,7 +80,7 @@ export default function BookingForm() {
         </div>
 
         <div className="mt-4 w-full">
-          <Form range={range} />
+          <Form range={range} guests={guests} setGuests={setGuests} />
         </div>
       </div>
     </div>
