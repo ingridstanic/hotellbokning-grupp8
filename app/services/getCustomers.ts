@@ -25,7 +25,7 @@ export const getCustomers = async () => {
     }));
 
     const villaCustomers = customers.filter((c) =>
-      c.email.endsWith("@villa.com"),
+      c.email?.endsWith("@villa.com"),
     );
 
     console.log(villaCustomers);
