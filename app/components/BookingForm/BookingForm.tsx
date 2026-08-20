@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { DateRange } from "react-day-picker";
 
 import MyDatePicker from "./MyDatePicker/DatePicker";
+
 import Form from "./Form";
 
 export default function BookingForm() {
@@ -11,7 +12,6 @@ export default function BookingForm() {
     from: new Date(),
     to: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000),
   });
-  const [guests, setGuests] = useState<number>(1);
 
   return (
     <div className="mx-auto flex max-w-7xl gap-4 p-5  bg-[#D9D9D9]">
@@ -79,7 +79,8 @@ export default function BookingForm() {
         </div>
 
         <div className="mt-4 w-full">
-          <Form range={range} guests={guests} setGuests={setGuests} />
+          <Form range={range} />
+          {/*} <ServerForm range={range} />*/}
         </div>
       </div>
     </div>

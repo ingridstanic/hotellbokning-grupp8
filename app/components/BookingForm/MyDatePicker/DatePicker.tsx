@@ -10,7 +10,7 @@ export function MyDatePicker({
   setRange,
 }: {
   range: DateRange | undefined;
-  //setRange: (range: DateRange) => void;
+
   setRange: (range: DateRange | undefined) => void;
 }) {
   function handleReset() {

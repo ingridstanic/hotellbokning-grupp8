@@ -1,19 +1,31 @@
 "use client";
 
-import { customers } from "@/app/data/customers";
 import { submitBooking } from "@/app/actions/createBooking";
-import { registerBooking } from "@/app/actions/registerBooking";
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
 import type { DateRange } from "react-day-picker";
+
+import { Customer } from "@/app/models/Customer";
+import { fetchCustomers } from "./serverForm";
 
 type FormProps = {
   range: DateRange | undefined;
-  guests: number;
-  setGuests: (guests: number) => void;
 };
 
-export default function Form({ range, guests, setGuests }: FormProps) {
+export default function Form({ range }: FormProps) {
   const [customerId, setCustomerId] = useState<string>();
+  const [guests, setGuests] = useState<number>(1);
+  const [customers, setCustomers] = useState<Customer[] | undefined>();
+
+  useEffect(() => {
+    async function loadCustomers() {
+      const customers = await fetchCustomers();
+
+      setCustomers(customers);
+    }
+
+    loadCustomers();
+  }, []);
 
   return (
     <form
@@ -39,26 +51,28 @@ export default function Form({ range, guests, setGuests }: FormProps) {
         <label htmlFor="customerId">Kund</label>
 
         <select
-          id="customerEmail"
-          name="customerEmail"
+          id="customerId"
+          name="customerId"
           className="w-full rounded-md border border-gray-400 bg-white p-3"
           value={customerId}
           onChange={(e) => {
-            setCustomerId(e.target.value ? String(e.target.value) : undefined);
+            setCustomerId(e.target.value);
           }}
         >
           <option value="">Välj kund</option>
 
-          {customers.map((customer) => (
-            <option key={customer.email} value={customer.email}>
+          {customers?.map((customer) => (
+            <option key={customer.id} value={customer.id}>
               {customer.firstName}
             </option>
           ))}
         </select>
+
         {!customerId && (
           <p className="text-red-400 text-xs"> var god och välj en kund</p>
         )}
       </div>
+
       <div className="flex flex-col gap-2">
         <label htmlFor="guests">Antal gäster</label>
 

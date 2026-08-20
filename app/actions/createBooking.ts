@@ -5,22 +5,6 @@ import { getBookings } from "../services/getBookings";
 import { getHotels } from "../services/getHotels";
 import { createBookingRequest } from "../services/createBookingRequest";
 
-export const limitBookings = async (checkInDate: string) => {
-  const result = await getBookings();
-
-  const bookings: Booking[] = result.bookings;
-  //hittar alla bokingar
-
-  const bookingsChosenDay = bookings.filter(
-    (b) => b.checkInDate === checkInDate,
-    //hittar alla bokningar på incheckningsdagen
-  );
-
-  console.log(bookingsChosenDay);
-
-  return bookingsChosenDay.length;
-};
-
 export async function submitBooking(formData: FormData): Promise<void> {
   await createBooking(formData);
 }
@@ -31,11 +15,7 @@ export const createBooking = async (form: FormData) => {
   const checkInDate = String(form.get("checkInDate"));
   const checkOutDate = String(form.get("checkOutDate"));
 
-  const numberOfBookings = await limitBookings(checkInDate);
-
-  if (numberOfBookings >= 3) {
-    throw new Error("No more bookings available for this date");
-  }
+  console.log("id", customerId);
 
   const { hotels } = await getHotels();
 
