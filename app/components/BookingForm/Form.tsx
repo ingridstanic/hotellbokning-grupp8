@@ -1,10 +1,11 @@
 "use client";
 
-import { customers } from "@/app/data/customers";
 import { createBooking } from "@/app/actions/createBooking";
 import { useState, useActionState, useEffect } from "react";
 import type { DateRange } from "react-day-picker";
 import BookingMessage from "@/app/components/BookingMessage/BookingMessage";
+import { fetchCustomers } from "./serverForm";
+import { Customer } from "@/app/models/Customer";
 
 type FormProps = {
   range: DateRange | undefined;
@@ -12,13 +13,24 @@ type FormProps = {
   setGuests: (guests: number) => void;
 };
 
-export default async function Form({ range, guests, setGuests }: FormProps) {
+export default function Form({ range, guests, setGuests }: FormProps) {
+  const [customers, setCustomers] = useState<Customer[]>([]);
   const [customerId, setCustomerId] = useState<string>();
   const [showMessage, setShowMessage] = useState(false);
   const [state, formAction] = useActionState(createBooking, {
     success: false,
     error: "",
   });
+
+  useEffect(() => {
+    async function loadCustomers() {
+      const customers = await fetchCustomers();
+
+      setCustomers(customers);
+    }
+
+    loadCustomers();
+  }, []);
 
   useEffect(() => {
     if (state.success || state.error) {
@@ -64,7 +76,7 @@ export default async function Form({ range, guests, setGuests }: FormProps) {
             <option value="">Välj kund</option>
 
             {customers.map((customer) => (
-              <option key={customer.email} value={customer.email}>
+              <option key={customer.id} value={customer.id}>
                 {customer.firstName}
               </option>
             ))}
