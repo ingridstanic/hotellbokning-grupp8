@@ -24,7 +24,7 @@ export default function Navbar() {
           <span className="h-6 w-px bg-black/50" />
 
           <a
-            href="#guests"
+            href="/#guests"
             className="flex h-full items-center px-7 text-sm text-black hover:opacity-70"
           >
             GÄSTER
@@ -33,7 +33,7 @@ export default function Navbar() {
           <span className="h-6 w-px bg-black/50" />
 
           <a
-            href="#booking"
+            href="/#booking"
             className="flex items-center px-4 py-2 text-sm text-black hover:opacity-70 border border-[#D9D9D9] rounded-full hover:bg-[#D9D9D9] hover:text-black transition-colors"
           >
             BOKA
