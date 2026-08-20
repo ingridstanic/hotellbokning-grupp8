@@ -64,7 +64,7 @@ export default function Form({ range, guests, setGuests }: FormProps) {
 
           <select
             id="customerId"
-            name="customerEmail"
+            name="customerId"
             className="w-full rounded-md border border-gray-400 bg-white p-3"
             value={customerId}
             onChange={(e) => {

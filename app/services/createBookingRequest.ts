@@ -1,5 +1,6 @@
+import { Booking } from "../models/Booking";
 import { NewBooking } from "../models/NewBooking";
- 
+
 const apiUrl = "https://aspcode.net/api/db/HotelAPI/bookings";
 const apiKey = process.env.HOTEL_API_KEY!;
 
