@@ -7,7 +7,7 @@ const apiKey = process.env.HOTEL_API_KEY!;
 export const seedHotel = async (hotel: NewHotel) => {
   const { hotels: hotelsFromDB } = await getHotels();
 
-  const alreadyExistingHotel = hotelsFromDB?.some(
+  let alreadyExistingHotel = hotelsFromDB?.some(
     (hFromDB) => hFromDB.name === hotel.name,
   );
 
@@ -29,6 +29,7 @@ export const seedHotel = async (hotel: NewHotel) => {
 
       if (response.ok) {
         console.log("Hotel added to database.", response.status);
+        alreadyExistingHotel = true;
       } else {
         console.error("POST failed", response.status);
       }
