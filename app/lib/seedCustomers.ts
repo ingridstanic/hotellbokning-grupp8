@@ -1,5 +1,5 @@
 import { NewCustomer } from "../models/NewCustomer";
-import { createCustomer } from "../services/createCostumer";
+import { createCustomer } from "../services/createCustomer";
 import { getCustomers } from "../services/getCustomers";
 
 export const seedCustomers = async (customers: NewCustomer[]) => {

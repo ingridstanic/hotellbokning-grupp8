@@ -60,6 +60,7 @@ export const getCustomerByEmail = async (email: string) => {
     console.log(data[0].data);
     return {
       customer: data[0].data,
+      id: data[0].id,
       error: "",
     };
   } catch (error) {
