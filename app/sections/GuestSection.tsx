@@ -10,9 +10,7 @@ export default async function GuestSection() {
       id="guests"
       className="min-h-screen border-50 border-[#74645B] bg-[#FFF9F3]"
     >
-      <h2 className="px-8 py-4 mx-40 text-3xl">
-        Gäster
-      </h2>
+      <h2 className="px-8 py-4 mx-40 text-3xl">Gäster</h2>
 
       <div className="mx-auto h-px w-[80%] bg-black/30" />
 

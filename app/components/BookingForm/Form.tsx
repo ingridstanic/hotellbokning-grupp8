@@ -4,7 +4,7 @@ import { createBooking } from "@/app/actions/createBooking";
 import { useState, useActionState, useEffect } from "react";
 import type { DateRange } from "react-day-picker";
 import BookingMessage from "@/app/components/BookingMessage/BookingMessage";
-import { fetchCustomers } from "./serverForm";
+import { fetchCustomers } from "./fetchCustomers";
 import { Customer } from "@/app/models/Customer";
 
 type FormProps = {
