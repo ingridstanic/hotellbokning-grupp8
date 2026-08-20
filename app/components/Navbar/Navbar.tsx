@@ -7,8 +7,9 @@ export default function Navbar() {
         <Image
           src="/images/logga.png"
           alt="Logo"
-          width={140}
-          height={40}
+          width={160}
+          height={50}
+          className="w-20 h-auto"
         />
       </div>
       <div className="h-15 justify-end px-8">
