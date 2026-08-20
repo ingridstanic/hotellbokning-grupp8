@@ -24,6 +24,7 @@ export const createCustomer = async (customer: NewCustomer) => {
     const data: ApiResponse<Customer> = await response.json();
     return {
       customer: data.data,
+      id: data.id,
       error: "",
     };
   } catch (error) {

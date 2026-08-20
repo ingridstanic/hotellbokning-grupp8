@@ -26,6 +26,7 @@ export const createBooking = async (booking: NewBooking) => {
 
     return {
       booking: data.data,
+      id: data.id,
       error: "",
     };
   } catch (error) {

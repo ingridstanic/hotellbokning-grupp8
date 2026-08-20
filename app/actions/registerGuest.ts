@@ -1,5 +1,5 @@
 import { NewCustomer } from "../models/NewCustomer";
-import { createCustomer } from "../services/createCostumer";
+import { createCustomer } from "../services/createCustomer";
 
 export async function registerGuest(form: FormData) {
   const firstName = form.get("firstName") as string;

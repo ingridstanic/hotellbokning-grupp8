@@ -11,7 +11,6 @@ export const seedBookings = async (bookings: NewBooking[]) => {
 
   for (const booking of bookings) {
     const newBookingkey = createBookingKey(booking);
-    console.log(newBookingkey);
     if (!existingKeys.has(newBookingkey)) {
       const { booking: createdBooking, error } = await createBooking(booking);
 
