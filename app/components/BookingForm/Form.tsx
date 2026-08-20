@@ -15,7 +15,7 @@ type FormProps = {
 
 export default function Form({ range, guests, setGuests }: FormProps) {
   const [customers, setCustomers] = useState<Customer[]>([]);
-  const [customerEmail, setCustomerEmail] = useState<string>();
+  const [customerId, setCustomerId] = useState<string>();
   const [showMessage, setShowMessage] = useState(false);
   const [state, formAction] = useActionState(createBooking, {
     success: false,
@@ -66,21 +66,21 @@ export default function Form({ range, guests, setGuests }: FormProps) {
             id="customerId"
             name="customerEmail"
             className="w-full rounded-md border border-gray-400 bg-white p-3"
-            value={customerEmail}
+            value={customerId}
             onChange={(e) => {
-              setCustomerEmail(e.target.value);
+              setCustomerId(e.target.value);
             }}
           >
             <option value="">Välj kund</option>
 
             {customers?.map((customer) => (
-              <option key={customer.id} value={customer.email}>
+              <option key={customer.id} value={customer.id}>
                 {customer.firstName}
               </option>
             ))}
           </select>
 
-          {!customerEmail && (
+          {!customerId && (
             <p className="text-red-400 text-xs"> var god och välj en kund</p>
           )}
         </div>
@@ -100,7 +100,7 @@ export default function Form({ range, guests, setGuests }: FormProps) {
         </div>
         <button
           disabled={
-            !customerEmail ||
+            !customerId ||
             !range?.from ||
             !range?.to ||
             range.from.getTime() === range.to.getTime()

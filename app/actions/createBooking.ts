@@ -22,7 +22,7 @@ export const createBooking = async (
   form: FormData,
 ) => {
   const guests = Number(form.get("guests"));
-  const customerEmail = String(form.get("customerEmail"));
+  const customerId = String(form.get("customerId"));
   const checkInDate = String(form.get("checkInDate"));
   const checkOutDate = String(form.get("checkOutDate"));
 
@@ -43,9 +43,9 @@ export const createBooking = async (
   const hotelId = hotels[0].id;
 
   await createBookingRequest({
+    customerId,
     checkInDate,
     checkOutDate,
-    customerEmail,
     guests,
     hotelId,
   });
