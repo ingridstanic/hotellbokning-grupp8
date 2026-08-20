@@ -9,8 +9,6 @@ import { Customer } from "@/app/models/Customer";
 
 type FormProps = {
   range: DateRange | undefined;
-  guests: number;
-  setGuests: (guests: number) => void;
 };
 
 export default function Form({ range, guests, setGuests }: FormProps) {
@@ -63,28 +61,28 @@ export default function Form({ range, guests, setGuests }: FormProps) {
           <label htmlFor="customerId">Kund</label>
 
           <select
-            id="customerEmail"
-            name="customerEmail"
+            id="customerId"
+            name="customerId"
             className="w-full rounded-md border border-gray-400 bg-white p-3"
-            value={customerEmail}
+            value={customerId}
             onChange={(e) => {
-              setCustomerEmail(
-                e.target.value ? String(e.target.value) : undefined,
-              );
+              setCustomerId(e.target.value);
             }}
           >
             <option value="">Välj kund</option>
 
-            {customers.map((customer) => (
+            {customers?.map((customer) => (
               <option key={customer.id} value={customer.id}>
                 {customer.firstName}
               </option>
             ))}
           </select>
-          {!customerEmail && (
+
+          {!customerId && (
             <p className="text-red-400 text-xs"> var god och välj en kund</p>
           )}
         </div>
+
         <div className="flex flex-col gap-2">
           <label htmlFor="guests">Antal gäster</label>
 
