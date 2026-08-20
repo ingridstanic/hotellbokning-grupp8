@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import type { DateRange } from "react-day-picker";
 
 import { Customer } from "@/app/models/Customer";
-import { fetchCustomers } from "./serverForm";
+import { fetchCustomers } from "./fetchCustomers";
 
 type FormProps = {
   range: DateRange | undefined;

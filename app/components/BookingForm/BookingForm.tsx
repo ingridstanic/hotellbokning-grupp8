@@ -80,7 +80,6 @@ export default function BookingForm() {
 
         <div className="mt-4 w-full">
           <Form range={range} />
-          {/*} <ServerForm range={range} />*/}
         </div>
       </div>
     </div>
