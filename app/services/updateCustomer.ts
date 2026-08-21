@@ -8,7 +8,7 @@ export const updateCustomer = async (customer: Customer) => {
   try {
     const response = await fetch(`${apiUrl}${customer.id}`, {
       method: "PATCH",
-      headers: { "Constent-Type": "application/json", "X-API-Key": apiKey },
+      headers: { "Content-Type": "application/json", "X-API-Key": apiKey },
       body: JSON.stringify(customer),
     });
 

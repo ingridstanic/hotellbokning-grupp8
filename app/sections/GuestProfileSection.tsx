@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { fetchCustomers } from "../components/BookingForm/fetchCustomers";
 import { getBookings } from "../services/getBookings";
-import GuestProfileForm from "../components/GuestProfileForm/GuestProfileForm";
+import GuestProfileForm from "../components/GuestProfile/GuestProfileForm";
 
 type GuestProfileSectionProps = {
   guestId: string;
@@ -33,7 +33,7 @@ export default async function GuestProfile({
       </div>
       <div className="mx-auto h-px mt-20 w-[80%] bg-black/30" />
 
-      <GuestProfileForm bookings={customerBookings} customer={customer} />
+      <GuestProfileForm customer={customer} bookings={customerBookings}/>
     </main>
   );
 }
