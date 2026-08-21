@@ -4,6 +4,7 @@ import Image from "next/image";
 import { getWeather } from "../services/getWeather";
 import { useState } from "react";
 import { useEffect } from "react";
+import { WeatherResponse } from "../models/WeatherResponse";
 
 function getWeatherImage(weatherCode: number): string {
   switch (true) {
@@ -45,11 +46,12 @@ function getWeatherDescription(weatherCode: number): string {
 
 export default function WeatherSection() {
   const [dayIndex, setDayIndex] = useState(1);
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<WeatherResponse | null>();
 
   useEffect(() => {
     async function fetchWeather() {
       const weatherData = await getWeather();
+      if (weatherData === null) return;
       setData(weatherData);
     }
 
