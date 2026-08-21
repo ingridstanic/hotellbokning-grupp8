@@ -20,7 +20,7 @@ export default async function GuestProfile({
   }
 
   const customerBookings = bookings.filter(
-    (booking) => booking.customerEmail === customer.email,
+    (booking) => booking.customerId === customer.id,
   );
 
   return (
