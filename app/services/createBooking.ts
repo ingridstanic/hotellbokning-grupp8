@@ -1,5 +1,3 @@
-"use server";
-
 import { ApiResponse } from "../models/ApiResponse";
 import { Booking } from "../models/Booking";
 import { NewBooking } from "../models/NewBooking";

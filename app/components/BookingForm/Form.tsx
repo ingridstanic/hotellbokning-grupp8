@@ -1,6 +1,6 @@
 "use client";
 
-import { createBooking } from "@/app/actions/createBooking";
+import { registerBooking } from "@/app/actions/registerBooking";
 import { useState, useActionState, useEffect } from "react";
 import type { DateRange } from "react-day-picker";
 import BookingMessage from "@/app/components/BookingMessage/BookingMessage";
@@ -17,7 +17,7 @@ export default function Form({ range, guests, setGuests }: FormProps) {
   const [customers, setCustomers] = useState<Customer[]>([]);
   const [customerId, setCustomerId] = useState<string>();
   const [showMessage, setShowMessage] = useState(false);
-  const [state, formAction] = useActionState(createBooking, {
+  const [state, formAction] = useActionState(registerBooking, {
     success: false,
     error: "",
   });

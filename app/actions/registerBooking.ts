@@ -1,63 +1,57 @@
+"use server";
 
-import { NewBooking } from "../models/NewBooking";
+import { Booking } from "../models/Booking";
+import { getBookings } from "../services/getBookings";
+import { getHotels } from "../services/getHotels";
 import { createBooking } from "../services/createBooking";
-import { getHotels } from "../services/getHotels"
-// export const createBooking = async (form: FormData) => {
-//   const guests = Number(form.get("guests"));
-//   const customerId = form.get("customerId");
-//   const checkInDate = form.get("checkInDate");
-//   const checkOutDate = form.get("checkOutDate");
 
-//   const { hotels } = await getHotels();
+export const limitBookings = async (checkInDate: string) => {
+  const result = await getBookings();
 
-//   if (hotels.length === 0) {
-//     throw new Error("No hotel found");
-//   }
+  const bookings: Booking[] = result.bookings;
 
-//   const hotelId = hotels[0].id;
+  const bookingsChosenDay = bookings.filter(
+    (booking) => booking.checkInDate === checkInDate,
+  );
 
-//   const response = await fetch("https://aspcode.net/api/db/HotelAPI/bookings", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//       "X-API-Key": process.env.API_KEY!,
-//     },
-//     body: JSON.stringify({
-//       checkInDate,
-//       checkOutDate,
-//       customerId,
-//       guests,
-//       hotelId,
-//     }),
-//   });
+  return bookingsChosenDay.length;
+};
 
-//   if (!response.ok) {
-//     throw new Error("Could not create booking");
-//   }
+export const registerBooking = async (
+  _state: { success: boolean; error: string },
+  form: FormData,
+) => {
+  const guests = Number(form.get("guests"));
+  const customerId = String(form.get("customerId"));
+  const checkInDate = String(form.get("checkInDate"));
+  const checkOutDate = String(form.get("checkOutDate"));
 
-//   const data: Booking = await response.json();
+  const numberOfBookings = await limitBookings(checkInDate);
 
-//   return data;
-// };
+  if (numberOfBookings >= 3)
+    return {
+      success: false,
+      error: "Hotellet är fullbokat!",
+    };
 
-// export const registerBooking = async (form: FormData, hotelId: string) => {
- // const guests = Number(form.get("guests"));
- // const customerId = form.get("customerId") as string;
- // const checkInDate = form.get("checkInDate") as string;
- // const checkOutDate = form.get("checkOutDate") as string;
+  const { hotels } = await getHotels();
 
- // const newBooking: NewBooking = {
- //   guests,
- //   customerId,
- //   checkInDate,
- //   checkOutDate,
- //   hotelId,
- // };
+  if (hotels.length === 0) {
+    throw new Error("No hotel found");
+  }
 
- // const createdBooking = await createBooking(newBooking);
- // if (createdBooking.error) {
- //   throw new Error(createdBooking.error);
- // }
+  const hotelId = hotels[0].id;
 
- // return createdBooking.booking;
-//};
+  await createBooking({
+    customerId,
+    checkInDate,
+    checkOutDate,
+    guests,
+    hotelId,
+  });
+
+  return {
+    success: true,
+    error: "",
+  };
+};

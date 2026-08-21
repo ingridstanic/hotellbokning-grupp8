@@ -11,8 +11,6 @@ export const seedHotel = async (hotel: NewHotel) => {
     (hFromDB) => hFromDB.name === hotel.name,
   );
 
-  console.log(alreadyExistingHotel, hotel.name);
-
   if (!alreadyExistingHotel) {
     try {
       const response = await fetch(apiUrl, {

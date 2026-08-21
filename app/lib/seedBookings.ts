@@ -18,7 +18,6 @@ export const seedBookings = async (bookings: NewBooking[]) => {
         console.error("Could not create booking", error);
       } else {
         existingKeys.add(newBookingkey);
-        console.log(`${newBookingkey} added to database.`);
       }
     }
   }

@@ -21,7 +21,6 @@ export const seedCustomers = async (customers: NewCustomer[]) => {
         console.error("Could not create customer: ", customer.email, error);
       } else {
         existingEmails.add(customer.email);
-        console.log(`${customer.email} added to database`);
       }
     }
   }
