@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { getWeather } from "../lib/weather";
+import { getWeather } from "../services/getWeather";
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -97,8 +97,8 @@ export default function WeatherSection() {
       <div className="mx-auto h-px w-[80%] bg-black/30" />
 
       <div className="pt-10 text-left text-2xl pl-40 text-black">
-        <p>H: {maxTemperature} grader</p>
-        <p>L: {minTemperature} grader</p>
+        <p>H: {maxTemperature}°C</p>
+        <p>L: {minTemperature}°C</p>
         <p>{weatherDescription}</p>
       </div>
 
