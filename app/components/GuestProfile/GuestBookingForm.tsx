@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Booking } from "@/app/models/Booking";
+import { updateBookingAction, deleteBookingAction } from "@/app/actions/changeBooking";
 
 type BookingRowProps = {
     booking: Booking;
@@ -13,6 +14,20 @@ const [isEditing, setIsEditing] = useState(false);
 const [checkInDate, setCheckInDate] = useState(booking.checkInDate);
 const [checkOutDate, setCheckOutDate] = useState(booking.checkOutDate);
 const [guests, setGuests] = useState(booking.guests);
+
+const handleSave = async () => {
+  await updateBookingAction(
+    booking.id,
+    checkInDate,
+    checkOutDate,
+    guests
+  );
+  setIsEditing(false);
+};
+
+const handleDelete = async () => {
+  await deleteBookingAction(booking.id);
+};
 
 return (
      <div className="mx-auto flex w-[80%] items-center justify-between py-20 text-black">
@@ -62,14 +77,15 @@ return (
       </div>
        <button
         type="button"
-        onClick={() => setIsEditing(!isEditing)}
-        className="rounded-md border border-black px-5 py-2"
+        onClick={isEditing ? handleSave : () => setIsEditing(true)}
+        className="rounded-md border hover:bg-[#74645B] border-black px-5 py-2"
       >
         {isEditing ? "Spara" : "Ändra"}
       </button>
       <button
         type="button"
-        className="rounded-md border border-black px-5 py-2"
+        onClick={handleDelete} 
+        className="rounded-md border hover:bg-[#74645B] border-black px-5 py-2"
       >
         Avboka
       </button>
