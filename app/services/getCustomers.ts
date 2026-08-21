@@ -57,10 +57,14 @@ export const getCustomerByEmail = async (email: string) => {
 
     const data: ApiResponse<Customer>[] = await response.json();
 
-    console.log(data[0].data);
+    const customers = data.map((row) => ({
+      ...row.data,
+      id: row.id,
+    }));
+
+    console.log();
     return {
-      customer: data[0].data,
-      id: data[0].id,
+      customer: customers,
       error: "",
     };
   } catch (error) {
