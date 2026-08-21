@@ -106,8 +106,8 @@ export default function WeatherSection() {
         <Image
           src={weatherImage}
           alt={weatherDescription}
-          width={500}
-          height={500}
+          width={700}
+          height={700}
         />
       </div>
     </>
