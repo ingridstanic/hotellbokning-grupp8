@@ -21,6 +21,4 @@ export async function updateCustomerAction(
   }
 
   revalidatePath("/guests/[guestId]", "page");
-
-  return result.customer;
 }
