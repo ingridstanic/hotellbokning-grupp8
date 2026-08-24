@@ -13,11 +13,14 @@ export const updateBooking = async (
   try {
     const response = await fetch(`${apiUrl}${id}`, {
       method: "PATCH",
-      headers: { "Content-Type": "application/json", "X-API-Key": apiKey },
+      headers: {
+        "Content-Type": "application/json",
+        "X-API-Key": apiKey,
+      },
       body: JSON.stringify({
-        checkInDate: checkInDate,
-        checkOutDate: checkOutDate,
-        guests: guests,
+        checkInDate,
+        checkOutDate,
+        guests,
       }),
     });
 
@@ -25,17 +28,12 @@ export const updateBooking = async (
       throw new Error(`Could not update booking ${response.status}`);
     }
 
-    const data: ApiResponse<Booking> = await response.json();
-
     return {
-      booking: data.data,
-      id: data.id,
       error: "",
     };
   } catch (error) {
-    console.error("Could not update booking");
+    console.error("Could not update booking", error);
     return {
-      booking: null,
       error: "Could not update booking. Try again.",
     };
   }
