@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import { submitGuest } from "../actions/registerGuest";
+import { registerGuest } from "../actions/registerGuest";
 
 export default function WeatherSection() {
   const [firstName, setFirstName] = useState<string>("");
@@ -24,7 +24,7 @@ export default function WeatherSection() {
 
         <form
           className="flex w-[50%] max-w-2xl flex-col gap-4"
-          action={submitGuest}
+          action={registerGuest}
         >
           <input
             type="text"

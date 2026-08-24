@@ -4,12 +4,7 @@ import { NewCustomer } from "../models/NewCustomer";
 import { createCustomer } from "../services/createCustomer";
 import { getCustomerByEmail } from "../services/getCustomers";
 
-export async function submitGuest(form: FormData) {
-  return await registerGuest(form);
-}
-
 export async function registerGuest(form: FormData) {
-  console.log("registerGuest, anroppad");
   const firstName = form.get("firstName") as string;
   const lastName = form.get("lastName") as string;
   const email = form.get("email") as string;
@@ -19,10 +14,7 @@ export async function registerGuest(form: FormData) {
   console.log(existingCustomer);
 
   if (existingCustomer) {
-    return {
-      customer: null,
-      error: "Det finns redan en kund med denna e-mail.",
-    };
+    throw new Error("Det finns redan en kund med denna email.");
   }
 
   const newCustomer: NewCustomer = {
@@ -31,7 +23,6 @@ export async function registerGuest(form: FormData) {
     email,
   };
 
+  await createCustomer(newCustomer);
   revalidatePath("/guests");
-  const result = await createCustomer(newCustomer);
-  return result;
 }
