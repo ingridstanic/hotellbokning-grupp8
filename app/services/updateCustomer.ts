@@ -16,16 +16,12 @@ export const updateCustomer = async (customer: Customer) => {
       throw new Error(`Could not update Customer${response.status}`);
     }
 
-    const data: ApiResponse<Customer> = await response.json();
     return {
-      customer: data.data,
-      id: data.id,
       error: "",
     };
   } catch (error) {
     console.error("Could not update customer.");
     return {
-      customer: null,
       error: "Could not update customer. Try again.",
     };
   }
