@@ -3,7 +3,7 @@
 import { ChangeEvent, useState } from "react";
 import { Customer } from "@/app/models/Customer";
 import { Booking } from "@/app/models/Booking";
-import BookingMessage from "../BookingMessage/BookingMessage";
+
 import BookingRow from "@/app/components/GuestProfile/GuestBookingForm";
 
 type GuestProfileFormProps = {
