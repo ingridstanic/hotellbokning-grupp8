@@ -9,8 +9,6 @@ import BookingRow from "@/app/components/GuestProfile/GuestBookingForm";
 type GuestProfileFormProps = {
   customer: Customer;
   bookings: Booking[];
-  customer: Customer;
-  bookings: Booking[];
 };
 
 export default function GuestProfileForm({
