@@ -4,9 +4,9 @@ import { useState } from "react";
 import { submitGuest } from "../actions/registerGuest";
 
 export default function WeatherSection() {
-  const [firstName, setFirstName] = useState<string>();
-  const [LastName, setLastName] = useState<string>();
-  const [email, setEmail] = useState<string>();
+  const [firstName, setFirstName] = useState<string>("");
+  const [LastName, setLastName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
 
   return (
     <div className="relative h-[600px] w-full overflow-hidden">
