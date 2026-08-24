@@ -30,7 +30,7 @@ export default function BookingRow({ booking, customer }: BookingRowProps) {
 
     if (checkInDate >= newCheckOutDate) {
       setShowMessage(true);
-      setMessage("You cannot checkout before you check in!");
+      setMessage("Du kan inte checka in före du checkar ut!");
     }
   }
 
@@ -38,7 +38,7 @@ export default function BookingRow({ booking, customer }: BookingRowProps) {
     await updateBookingAction(booking.id, checkInDate, checkOutDate, guests);
     setIsEditing(false);
     setShowMessage(true);
-    setMessage("Guest information updated");
+    setMessage("Ändringen är genomförd!");
   };
 
   const handleDelete = async () => {
