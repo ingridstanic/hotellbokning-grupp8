@@ -29,15 +29,11 @@ export const updateBooking = async (
     }
 
     return {
-      booking: null,
-      id,
       error: "",
     };
   } catch (error) {
-    console.error("Could not update booking:", error);
-
+    console.error("Could not update booking", error);
     return {
-      booking: null,
       error: "Could not update booking. Try again.",
     };
   }

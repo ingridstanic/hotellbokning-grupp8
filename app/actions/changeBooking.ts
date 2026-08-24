@@ -22,8 +22,6 @@ export async function updateBookingAction(
   }
 
   revalidatePath("/guests/[guestId]", "page");
-
-  return result.booking;
 }
 
 export async function deleteBookingAction(bookingId: string) {

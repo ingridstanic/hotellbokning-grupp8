@@ -28,7 +28,7 @@ export const getCustomers = async () => {
       c.email?.endsWith("@villa.com"),
     );
 
-    console.log(villaCustomers);
+    // console.log(villaCustomers);
     return {
       customers: villaCustomers,
       error: "",
@@ -62,9 +62,9 @@ export const getCustomerByEmail = async (email: string) => {
       id: row.id,
     }));
 
-    console.log();
+    // console.log(customers);
     return {
-      customer: customers,
+      customer: customers[0],
       error: "",
     };
   } catch (error) {

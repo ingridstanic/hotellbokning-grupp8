@@ -26,7 +26,7 @@ export const getBookings = async () => {
     const villaBookings = bookings.filter(
       (b) => b.hotelId === "ea8129c0-9f84-4f34-a68a-9a153676c657",
     );
-    console.log(villaBookings);
+    // console.log(villaBookings);
 
     return {
       bookings: villaBookings,
