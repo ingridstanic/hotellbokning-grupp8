@@ -25,17 +25,12 @@ export const updateBooking = async (
       throw new Error(`Could not update booking ${response.status}`);
     }
 
-    const data: ApiResponse<Booking> = await response.json();
-
     return {
-      booking: data.data,
-      id: data.id,
       error: "",
     };
   } catch (error) {
-    console.error("Could not update booking");
+    console.error("Could not update booking", error);
     return {
-      booking: null,
       error: "Could not update booking. Try again.",
     };
   }

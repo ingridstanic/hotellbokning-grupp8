@@ -1,3 +1,5 @@
+"use server";
+import { revalidatePath } from "next/cache";
 import { NewCustomer } from "../models/NewCustomer";
 import { createCustomer } from "../services/createCustomer";
 import { getCustomerByEmail } from "../services/getCustomers";
@@ -7,13 +9,16 @@ export async function submitGuest(form: FormData) {
 }
 
 export async function registerGuest(form: FormData) {
+  console.log("registerGuest, anroppad");
   const firstName = form.get("firstName") as string;
   const lastName = form.get("lastName") as string;
   const email = form.get("email") as string;
 
-  const { customer: existingCusomter } = await getCustomerByEmail(email);
+  const { customer: existingCustomer } = await getCustomerByEmail(email);
 
-  if (existingCusomter) {
+  console.log(existingCustomer);
+
+  if (existingCustomer) {
     return {
       customer: null,
       error: "Det finns redan en kund med denna e-mail.",
@@ -26,9 +31,7 @@ export async function registerGuest(form: FormData) {
     email,
   };
 
+  revalidatePath("/guests");
   const result = await createCustomer(newCustomer);
-  if (result.error) {
-    throw new Error(result.error);
-  }
-  return result.customer;
+  return result;
 }
