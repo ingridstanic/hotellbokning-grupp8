@@ -5,6 +5,7 @@ import { Customer } from "@/app/models/Customer";
 import { Booking } from "@/app/models/Booking";
 import BookingMessage from "../BookingMessage/BookingMessage";
 import BookingRow from "@/app/components/GuestProfile/GuestBookingForm";
+import { updateCustomerAction } from "@/app/actions/updateCustomer";
 
 type GuestProfileFormProps = {
   customer: Customer;
@@ -19,6 +20,21 @@ export default function GuestProfileForm({
   const [firstName, setFirstName] = useState(customer.firstName);
   const [lastName, setLastName] = useState(customer.lastName);
   const [email, setEmail] = useState(customer.email);
+
+  async function handleSave() {
+  try {
+    await updateCustomerAction(
+      customer.id,
+      firstName,
+      lastName,
+      email,
+    );
+
+    setIsEditing(false);
+  } catch (error) {
+    console.error("Kunde inte uppdatera kunden", error);
+  }
+}
 
   const booking = bookings[0];
 
@@ -49,16 +65,13 @@ export default function GuestProfileForm({
   return (
     <>
       <div className="flex justify-end pr-40 pt-10">
-        <button
-          type="button"
-          onClick={() => {
-            setIsEditing(!isEditing);
-          }}
-          className={`rounded-md border border-black px-7 py-3 text-black ${invalidDates ? "bg-[#D9D9D9]" : ""}`}
-          disabled={invalidDates}
+       <button
+      type="button"
+      onClick={isEditing ? handleSave : () => setIsEditing(true)}
+      className="rounded-md border border-black px-7 py-3 text-black"
         >
-          {isEditing ? "Spara" : "Ändra"}
-        </button>
+        {isEditing ? "Spara" : "Ändra"}
+      </button>
       </div>
 
       <div className="pl-40 py-5 text-black">
