@@ -119,8 +119,8 @@ export default function BookingRow({ booking, customer }: BookingRowProps) {
             setIsCheckedIn(!isCheckedIn);
             setMessage(
               !isCheckedIn
-                ? `${customer.firstName} ${customer.lastName} checked in on ${checkInDate}`
-                : `${customer.firstName} ${customer.lastName} checked out on ${checkOutDate}`,
+                ? `${customer.firstName} ${customer.lastName} checkade in den ${checkInDate}`
+                : `${customer.firstName} ${customer.lastName} checkade ut den ${checkOutDate}`,
             );
             setShowMessage(true);
           }}
