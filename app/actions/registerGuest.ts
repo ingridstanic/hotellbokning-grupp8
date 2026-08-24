@@ -3,7 +3,7 @@ import { createCustomer } from "../services/createCustomer";
 import { getCustomerByEmail } from "../services/getCustomers";
 
 export async function submitGuest(form: FormData) {
-  await registerGuest(form);
+  return await registerGuest(form);
 }
 
 export async function registerGuest(form: FormData) {
