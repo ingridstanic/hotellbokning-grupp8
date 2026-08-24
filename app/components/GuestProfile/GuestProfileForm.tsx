@@ -28,23 +28,8 @@ export default function GuestProfileForm({
   const [checkOutDate, setCheckOutDate] = useState(
     booking?.checkOutDate ?? "Bokning saknas",
   );
-  const [guests, setGuests] = useState(booking?.guests ?? 1);
-
-  const [isCheckedIn, setIsCheckedIn] = useState<boolean>();
-  const [showMessage, setShowMessage] = useState(false);
-  const [message, setMessage] = useState("");
 
   const invalidDates = checkInDate >= checkOutDate;
-
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const newCheckOutDate = e.target.value;
-    setCheckOutDate(newCheckOutDate);
-
-    if (checkInDate >= newCheckOutDate) {
-      setShowMessage(true);
-      setMessage("You cannot checkout before you check in!");
-    }
-  }
 
   return (
     <>
@@ -108,7 +93,7 @@ export default function GuestProfileForm({
 
       <div>
         {bookings.map((booking) => (
-          <BookingRow key={booking.id} booking={booking} />
+          <BookingRow key={booking.id} booking={booking} customer={customer} />
         ))}
       </div>
     </>

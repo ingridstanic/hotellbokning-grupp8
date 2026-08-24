@@ -5,13 +5,12 @@ import { deleteBooking } from "../services/deleteBooking";
 import { revalidatePath } from "next/cache";
 
 export async function updateBookingAction(
-    bookingId: string,
-    checkInDate: string,
-    checkOutDate: string,
-    guests: number,
+  bookingId: string,
+  checkInDate: string,
+  checkOutDate: string,
+  guests: number,
 ) {
-
-const result = await updateBooking(
+  const result = await updateBooking(
     checkInDate,
     checkOutDate,
     guests,
@@ -22,19 +21,19 @@ const result = await updateBooking(
     throw new Error(result.error);
   }
 
-  revalidatePath("/guests/[guestId]", "page");  
+  revalidatePath("/guests/[guestId]", "page");
 
   return result.booking;
 }
 
 export async function deleteBookingAction(bookingId: string) {
-    const result = await deleteBooking(bookingId);
+  const result = await deleteBooking(bookingId);
 
-    if(!result.success) {
-        throw new Error(result.error);
-    }
+  if (!result.success) {
+    throw new Error(result.error);
+  }
 
-    revalidatePath("/guests/[guestId]", "page"); 
+  revalidatePath("/guests/[guestId]", "page");
 
-    return result;
+  return result;
 }
