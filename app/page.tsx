@@ -18,9 +18,6 @@ function Home() {
         <RegisterGuestSection />
       </section>
       <section className="min-h-screen">
-        <GuestSection />
-      </section>
-      <section className="min-h-screen">
         <WeatherSection />
       </section>
       <Footer />
