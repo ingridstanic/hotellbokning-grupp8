@@ -35,7 +35,6 @@ export const getBookings = async () => {
         error: "Kunde inte hitta villans hotell.",
       };
     }
-    // console.log(villaBookings);
 
     const villaBookings = bookings.filter((b) => b.hotelId === villaVila.id);
 

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { registerGuest } from "../actions/registerGuest";
 
-export default function WeatherSection() {
+export default function RegisterGuestSection() {
   const [firstName, setFirstName] = useState<string>("");
   const [LastName, setLastName] = useState<string>("");
   const [email, setEmail] = useState<string>("");

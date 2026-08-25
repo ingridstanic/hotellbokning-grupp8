@@ -4,6 +4,7 @@ import GuestSection from "./sections/GuestSection";
 import Footer from "./components/Footer/Footer";
 import WeatherSection from "./sections/WeatherSection";
 import RegisterGuestSection from "./sections/RegisterGuestSection";
+import Navbar from "./components/Navbar/Navbar";
 
 function Home() {
   return (
@@ -11,7 +12,7 @@ function Home() {
       <section className="min-h-screen">
         <HeroSection />
       </section>
-      <section className="min-h-screen">
+      {/**  <section className="min-h-screen">
         <BookingSection />
       </section>
       <section className="min-h-screen">
@@ -19,7 +20,7 @@ function Home() {
       </section>
       <section className="min-h-screen">
         <GuestSection />
-      </section>
+      </section>*/}
       <section className="min-h-screen">
         <WeatherSection />
       </section>

@@ -15,10 +15,10 @@ export default function BookingForm() {
   });
 
   return (
-    <div className="mx-auto flex max-w-7xl gap-4 p-5  bg-[#D9D9D9]">
+    <div className="flex max-w-7xl  gap-4 p-5   flex-2">
       <MyDatePicker range={range} setRange={setRange} />
 
-      <div className="flex flex-1 flex-col rounded-md bg-[#FFF9F3] p-4">
+      <div className="flex flex-1 flex-col rounded-md bg-[#D9D9D9] p-4">
         <div className="mb-6 w-full border-b-2 text-center">
           <h2 className="pb-3 text-2xl">DETALJER</h2>
         </div>
