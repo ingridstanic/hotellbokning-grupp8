@@ -1,5 +1,6 @@
 import { ApiResponse } from "../models/ApiResponse";
 import { Booking } from "../models/Booking";
+import { getHotels } from "./getHotels";
 
 const apiUrl = "https://aspcode.net/api/db/HotelAPI/bookings/";
 const apiKey = process.env.HOTEL_API_KEY!;
@@ -23,10 +24,20 @@ export const getBookings = async () => {
       id: row.id,
     }));
 
-    const villaBookings = bookings.filter(
-      (b) => b.hotelId === "ea8129c0-9f84-4f34-a68a-9a153676c657",
+    const { hotels } = await getHotels();
+    const villaVila = hotels.find(
+      (h) => h.address === "Villavilavägen 23, 123 33 Stockholm",
     );
+
+    if (!villaVila) {
+      return {
+        bookings: [],
+        error: "Kunde inte hitta villans hotell.",
+      };
+    }
     // console.log(villaBookings);
+
+    const villaBookings = bookings.filter((b) => b.hotelId === villaVila.id);
 
     return {
       bookings: villaBookings,
