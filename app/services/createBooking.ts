@@ -17,7 +17,7 @@ export const createBooking = async (booking: NewBooking) => {
     });
 
     if (!response.ok) {
-      throw new Error(`Could not create booking.`);
+      throw new Error(`Could not create booking. ${response.status}`);
     }
 
     const data: ApiResponse<Booking> = await response.json();
