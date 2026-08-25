@@ -53,7 +53,7 @@ export default function GuestProfileForm({
        <button
       type="button"
       onClick={isEditing ? handleSave : () => setIsEditing(true)}
-      className="rounded-md border border-black px-7 py-3 text-black"
+      className="rounded-md border border-black hover:bg-[#74645B] px-7 py-3 text-black"
         >
         {isEditing ? "Spara" : "Ändra"}
       </button>

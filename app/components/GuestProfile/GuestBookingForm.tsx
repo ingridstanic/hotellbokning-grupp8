@@ -124,7 +124,7 @@ export default function BookingRow({ booking, customer }: BookingRowProps) {
             );
             setShowMessage(true);
           }}
-          className="rounded-md border border-black px-7 py-3 text-black"
+          className="rounded-md border border-black hover:bg-[#74645B] px-7 py-3 text-black"
         >
           {isCheckedIn ? "Check out" : "Check in"}
         </button>
