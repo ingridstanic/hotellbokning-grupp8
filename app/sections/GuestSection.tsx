@@ -54,7 +54,7 @@ const totalPages = Math.ceil(
         {currentPage > 1 && (
           <Link
             href={`/guests?page=${currentPage - 1}`}
-            className="rounded-md border border-black px-4 py-2"
+            className="rounded-full border border-black px-4 py-2"
           >
             Föregående
           </Link>
@@ -67,7 +67,7 @@ const totalPages = Math.ceil(
         {currentPage < totalPages && (
           <Link
             href={`/guests?page=${currentPage + 1}`}
-            className="rounded-md border border-black px-4 py-2"
+            className="rounded-full border border-black px-4 py-2"
           >
             Nästa
           </Link>
