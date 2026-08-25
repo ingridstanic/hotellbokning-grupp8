@@ -46,7 +46,7 @@ export default function Navbar() {
           <span className="h-6 w-px bg-black/50" />
 
           <a
-            href="/guestlist"
+            href="/guests"
             className="flex h-full items-center px-7 text-sm text-black hover:opacity-70"
           >
             GÄSTLISTA
