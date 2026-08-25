@@ -8,6 +8,6 @@ import { seedHotel } from "../lib/seedHotel";
 export const SeedData = async () => {
   await seedCustomers(customers);
   await seedHotel(hotel);
-  //await seedBookings(bookings);
+  await seedBookings(bookings);
   return null;
 };
