@@ -20,15 +20,6 @@ export default function Navbar() {
       <div className="h-15 justify-end px-8">
         <div className="flex h-full items-center gap-6">
           <a
-            href="/"
-            className="flex h-full items-center px-7 text-sm text-black hover:opacity-70"
-          >
-            HEM
-          </a>
-
-          <span className="h-6 w-px bg-black/50" />
-
-          <a
             href="/registerguest"
             className="flex h-full items-center px-7 text-sm text-black hover:opacity-70"
           >
