@@ -12,19 +12,10 @@ function Home() {
       <section className="min-h-screen">
         <HeroSection />
       </section>
-      {/**  <section className="min-h-screen">
-        <BookingSection />
-      </section>
-      <section className="min-h-screen">
-        <RegisterGuestSection />
-      </section>
-      <section className="min-h-screen">
-        <GuestSection />
-      </section>*/}
+
       <section className="min-h-screen">
         <WeatherSection />
       </section>
-      <Footer />
     </main>
   );
 }
