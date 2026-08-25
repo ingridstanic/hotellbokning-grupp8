@@ -18,7 +18,7 @@ export function MyDatePicker({
   }
 
   return (
-    <div className="  flex-2">
+    <div className="flex-2">
       <div className="bg-[#74645B] p-4 pb-4 ml-4 mr-4  rounded-md">
         <div className="mb-6 w-full border-b-2 text-center">
           <h2 className="pb-3 text-2xl"> VÄLJ DATUM </h2>
@@ -33,6 +33,7 @@ export function MyDatePicker({
               </button>
             </div>
           )}
+
           <DayPicker
             disabled={{ before: new Date() }}
             mode="range"
