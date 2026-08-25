@@ -22,7 +22,7 @@ export const getHotels = async () => {
     }));
 
     const villaHotel = hotels.filter(
-      (h) => h.id === "ea8129c0-9f84-4f34-a68a-9a153676c657",
+      (h) => h.address === "Villavilavägen 23, 123 33 Stockholm",
     );
     // console.log(villaHotel);
     return {
