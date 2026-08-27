@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  --color-hotel: #fff9f3;
+  --color-hotel-dark: #74645b;
+  --color-hotel-text: #000000;
+
+  --font-fraunces: "Fraunces", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #fff9f3;
+  color: #000000;
+  font-family: "Fraunces", serif;
+}
