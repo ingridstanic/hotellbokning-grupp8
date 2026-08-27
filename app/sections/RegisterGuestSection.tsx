@@ -14,7 +14,7 @@ export default function RegisterGuestSection() {
         src="/images/register.png"
         alt=""
         fill
-        className="scale-90 object-cover blur-[1px] opacity-60"
+        className="scale-90 object-contain blur-[1px] opacity-60"
       />
 
       <div className="absolute inset-0 bg-[#FFF9F3]/20" />
