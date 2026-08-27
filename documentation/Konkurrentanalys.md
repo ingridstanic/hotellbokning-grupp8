@@ -8,8 +8,6 @@ Vi har kikat på en del hotellsidor där man använder sig av en video där man 
 
 Ett exempel vi gillade var The Sparrows sida där de i sin hero presenterar innehåll för bokning för den användaren som snabbt vill kunna boka ett rum.
 
-Ett hems hotell presenterar otillgängliga datum med ett kryss, så användaren ser enkelt vilka datum det finns att välja på.
-
 Något vi vill ta till oss i skapandet av vårt projekt är clean design och lätt tillgängliga funktioner.
 
 SAMMANFATTNING: Våra ledord för vår hotelldesign är levande animationer, personligt handmålat uttryck, enkelhet och lättillgänglighet.
