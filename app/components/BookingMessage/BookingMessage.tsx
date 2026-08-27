@@ -1,20 +1,18 @@
 "use client";
 
 type BookingMessageProps = {
-    message: string;
-    onClose: () => void;
+  message: string;
+  onClose: () => void;
 };
 
 export default function BookingMessage({
-    message,
-    onClose,
+  message,
+  onClose,
 }: BookingMessageProps) {
-    return  (
+  return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
       <div className="w-[90%] max-w-md rounded-xl bg-white p-8 text-center shadow-xl">
-        <p className="mb-6 text-lg">
-          {message}
-        </p>
+        <p className="mb-6 text-lg">{message}</p>
 
         <button
           type="button"

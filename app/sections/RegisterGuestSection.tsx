@@ -2,11 +2,24 @@
 import Image from "next/image";
 import { useState } from "react";
 import { registerGuest } from "../actions/registerGuest";
+import BookingMessage from "../components/BookingMessage/BookingMessage";
 
 export default function RegisterGuestSection() {
   const [firstName, setFirstName] = useState<string>("");
   const [LastName, setLastName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
+  const [message, setMessage] = useState("");
+  const [showMessage, setShowMessage] = useState(false);
+
+  async function onAction(form: FormData) {
+    const guestExists = await registerGuest(form);
+    setShowMessage(true);
+    if (guestExists) {
+      setMessage("Gästen finns redan i systemet");
+    } else {
+      setMessage("Gästen är nu inlagd i systemet");
+    }
+  }
 
   return (
     <div className="relative h-[600px] w-full overflow-hidden">
@@ -24,7 +37,7 @@ export default function RegisterGuestSection() {
 
         <form
           className="flex w-[50%] max-w-2xl flex-col gap-4"
-          action={registerGuest}
+          action={onAction}
         >
           <input
             type="text"
@@ -61,6 +74,12 @@ export default function RegisterGuestSection() {
           </button>
         </form>
       </div>
+      {showMessage && (
+        <BookingMessage
+          message={message}
+          onClose={() => setShowMessage(false)}
+        />
+      )}
     </div>
   );
 }

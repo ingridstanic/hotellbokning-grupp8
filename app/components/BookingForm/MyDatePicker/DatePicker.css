@@ -16,23 +16,9 @@
   font-weight: 600;
   padding-bottom: 10px;
 }
-/*
-.rdp-root {
-  --rdp-day-width: 50px;
-  --rdp-day-height: 50px;
-  --rdp-day_button-width: 50px;
-  --rdp-day_button-height: 50px;
+
+
+.rdp-root{
+--rdp-accent-color:#3F3D3D;
 }
 
-.rdp-day {
-  font-size: 16px;
-}
-
-.rdp-weekday {
-  font-size: 14px;
-}
-
-.rdp-month_caption {
-  font-size: 20px;
-  font-weight: 600;
-}*/
